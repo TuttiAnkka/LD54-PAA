@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://qlqeirklh68d"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c4r0h"]
+load_path = "res://.godot/imported/NextLevel –Linear.png-2cdbe4fd493c8be838359809fa6a4538.ctex"
+
+[node name="NextLevel–linear" type="Sprite2D"]
+texture_filter = 2
+position = Vector2(-289, 156)
+texture = SubResource("CompressedTexture2D_c4r0h")
