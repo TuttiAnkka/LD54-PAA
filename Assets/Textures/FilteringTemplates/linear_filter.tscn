@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm07k0s8w84dc"]
+
+[ext_resource type="Texture2D" uid="uid://bnwsugko60wf3" path="res://Assets/Textures/TestTextures/LinearFilter.png" id="1_ar12m"]
+
+[node name="LinearFilter" type="Sprite2D"]
+texture_filter = 2
+position = Vector2(-283, 119)
+texture = ExtResource("1_ar12m")
