@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csu77cogys2l2"
-path.s3tc="res://.godot/imported/VäriJuttu.png-a3c5ebcaa52b2930fd037f575a67b39d.s3tc.ctex"
+uid="uid://31hhxxcto3qt"
+path.s3tc="res://.godot/imported/ChaosEngine1_s11.png-0ed20443983ed92dd03cd7e5beb772cc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/TestTextures/VäriJuttu.png"
-dest_files=["res://.godot/imported/VäriJuttu.png-a3c5ebcaa52b2930fd037f575a67b39d.s3tc.ctex"]
+source_file="res://Assets/Textures/TestTextures/ChaosEngine1_s11.png"
+dest_files=["res://.godot/imported/ChaosEngine1_s11.png-0ed20443983ed92dd03cd7e5beb772cc.s3tc.ctex"]
 
 [params]
 

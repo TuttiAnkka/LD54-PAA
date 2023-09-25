@@ -1,3 +1,44 @@
-[gd_scene format=3 uid="uid://bn6o22xldy6al"]
+[gd_scene load_steps=7 format=3 uid="uid://bn6o22xldy6al"]
+
+[ext_resource type="Texture2D" uid="uid://dyf74m1n6u4g5" path="res://Assets/Shaders/PostProcess/MateriaaliEhkä.tres" id="1_88ibi"]
+[ext_resource type="Texture2D" uid="uid://csu77cogys2l2" path="res://Assets/Textures/TestTextures/VäriJuttu.png" id="2_2xf8h"]
+[ext_resource type="Material" uid="uid://dixqvwc3jadu5" path="res://Assets/Shaders/PostProcess/Pixelate.tres" id="3_qh03d"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_r0eey"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq271"]
+shading_mode = 0
+albedo_texture = ExtResource("2_2xf8h")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3opc3"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(725, 353)
+scale = Vector2(157.066, 1072.83)
+
+[node name="ChaosEngine1S11" type="Sprite2D" parent="."]
+position = Vector2(359, 133.921)
+scale = Vector2(1.14221, 0.810791)
+texture = ExtResource("1_88ibi")
+
+[node name="ChaosEngine1S12" type="Sprite2D" parent="."]
+position = Vector2(1122.06, 592.23)
+scale = Vector2(0.893364, 0.667698)
+texture = ExtResource("1_88ibi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.38258, 0, 2.18929, 0, 2.44914, 0, -1.92975, 0, 4.97201, 0.0296772, 0, -4.16157)
+mesh = SubResource("QuadMesh_r0eey")
+skeleton = NodePath("../Camera3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_bq271")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0296772, 0, 2.59877)
+fov = 26.5
+
+[node name="PostProcess" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.97259)
+mesh = SubResource("CylinderMesh_3opc3")
+surface_material_override/0 = ExtResource("3_qh03d")

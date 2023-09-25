@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csu77cogys2l2"
-path.s3tc="res://.godot/imported/VäriJuttu.png-a3c5ebcaa52b2930fd037f575a67b39d.s3tc.ctex"
+uid="uid://itkso4fnt5qk"
+path.s3tc="res://.godot/imported/LuurakoPossu_PossuTex_lores_256.png-75511dc6190ae04131e79835e5003095.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Assets/Textures/TestTextures/VäriJuttu.png"
-dest_files=["res://.godot/imported/VäriJuttu.png-a3c5ebcaa52b2930fd037f575a67b39d.s3tc.ctex"]
+source_file="res://Assets/Models/LuurakoPossu_PossuTex_lores_256.png"
+dest_files=["res://.godot/imported/LuurakoPossu_PossuTex_lores_256.png-75511dc6190ae04131e79835e5003095.s3tc.ctex"]
 
 [params]
 

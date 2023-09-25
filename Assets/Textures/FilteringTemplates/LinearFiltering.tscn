@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qlqeirklh68d"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c4r0h"]
+
+[node name="NextLevel–linear" type="Sprite2D"]
+texture_filter = 2
+position = Vector2(-289, 156)
+texture = SubResource("CompressedTexture2D_c4r0h")
