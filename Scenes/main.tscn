@@ -1,9 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn6o22xldy6al"]
+[gd_scene load_steps=5 format=3 uid="uid://bn6o22xldy6al"]
 
 [ext_resource type="Texture2D" uid="uid://m5srrn67mjyw" path="res://Assets/Textures/TestTextures/chaos_engine_06.png" id="1_ondng"]
+[ext_resource type="Shader" path="res://Assets/Shaders/RGB_Shift.gdshader" id="2_a2em5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tl3jy"]
+shader = ExtResource("2_a2em5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_vrnr4"]
 
 [node name="Main" type="Node2D"]
 
 [node name="ChaosEngine06" type="Sprite2D" parent="."]
 position = Vector2(160, 114)
 texture = ExtResource("1_ondng")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_tl3jy")
+position = Vector2(159.75, 121.5)
+scale = Vector2(320.5, 241)
+mesh = SubResource("QuadMesh_vrnr4")
