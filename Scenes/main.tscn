@@ -1,12 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn6o22xldy6al"]
+[gd_scene load_steps=10 format=3 uid="uid://bn6o22xldy6al"]
 
 [ext_resource type="Texture2D" uid="uid://m5srrn67mjyw" path="res://Assets/Textures/TestTextures/chaos_engine_06.png" id="1_ondng"]
-[ext_resource type="Shader" path="res://Assets/Shaders/RGB_Shift.gdshader" id="2_a2em5"]
+[ext_resource type="Shader" uid="uid://csgflyqc3vobq" path="res://Assets/Shaders/PostFilter_Sepia.tres" id="2_dmux1"]
+[ext_resource type="Shader" uid="uid://desw8ihv5b8by" path="res://Assets/Shaders/RGB_SHIFT.tres" id="3_iyop6"]
+[ext_resource type="Shader" uid="uid://cdjn7xui47y8e" path="res://Assets/Shaders/FragmentTest.tres" id="3_ovynu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tl3jy"]
-shader = ExtResource("2_a2em5")
+shader = ExtResource("2_dmux1")
+
+[sub_resource type="PrismMesh" id="PrismMesh_rlkto"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1u15"]
+shader = ExtResource("3_ovynu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_vrnr4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qg7rn"]
+shader = ExtResource("3_iyop6")
 
 [node name="Main" type="Node2D"]
 
@@ -14,9 +24,28 @@ shader = ExtResource("2_a2em5")
 position = Vector2(160, 114)
 texture = ExtResource("1_ondng")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-z_index = 1
+[node name="ChaosEngine07" type="Sprite2D" parent="."]
+position = Vector2(547, 103)
+texture = ExtResource("1_ondng")
+
+[node name="Sepia" type="MeshInstance2D" parent="."]
+z_index = 3
 material = SubResource("ShaderMaterial_tl3jy")
-position = Vector2(159.75, 121.5)
-scale = Vector2(320.5, 241)
+position = Vector2(160, 95)
+rotation = 0.729548
+scale = Vector2(160.812, 152.587)
+mesh = SubResource("PrismMesh_rlkto")
+
+[node name="Move" type="MeshInstance2D" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_y1u15")
+position = Vector2(250, 180)
+scale = Vector2(114.203, 93.5)
+mesh = SubResource("QuadMesh_vrnr4")
+
+[node name="RGBShit" type="MeshInstance2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_qg7rn")
+position = Vector2(161.5, 122.668)
+scale = Vector2(347, 264.664)
 mesh = SubResource("QuadMesh_vrnr4")
