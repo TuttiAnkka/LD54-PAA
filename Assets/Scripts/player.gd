@@ -22,6 +22,10 @@ var can_boost = true
 @onready var weapon = $WeaponPivot/Weapon
 
 
+func _ready():
+	current_speed = speed
+	print(speed)
+
 func _physics_process(delta):
 	movement(delta)
 	anim.position = position
@@ -59,8 +63,10 @@ func boost():
 		await get_tree().create_timer(boost_cooldown * boost_cooldown_multiplier).timeout # Boost cooldown timer.
 		can_boost = true
 		
-func enable_weapon():
-	spikes.set_process(false)
-	spikes.visible = false
-	weapon.set_process(true)
-	weapon.visible = true
+func change_weapon_status(status: bool, spread: bool):
+	spikes.set_process(!status)
+	spikes.visible = !status
+	weapon.set_process(status)
+	weapon.visible = status
+	weapon.spread = spread
+	weapon.canshoot = status
