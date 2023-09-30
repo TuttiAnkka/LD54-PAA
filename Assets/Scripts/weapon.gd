@@ -4,7 +4,7 @@ extends Sprite2D
 var bullet = preload("res://Scenes/bullet.tscn")
 @onready var bullet_spawn = $BulletSpawn
 
-var bullets: int = 20
+@export var bullets: int = 20
 var spread: bool = true
 var canshoot: bool = true
 

@@ -439,6 +439,8 @@ text = "EXIT"
 [node name="GameManager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("1_tkpbp")
+enemy_spawn_frequency = 2.0
+max_distance_from_player = 1000.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3

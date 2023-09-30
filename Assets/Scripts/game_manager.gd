@@ -9,8 +9,8 @@ var gas: float = 100
 @onready var player = $"../Player"
 
 # Enemy Spawning
-var enemy_spawn_frequency: float = 3
-var max_distance_from_player: float = 3000
+@export var enemy_spawn_frequency: float = 3
+@export var max_distance_from_player: float = 3000
 var enemy = preload("res://Scenes/enemy.tscn")
 var can_spawn = true
 # Enemies should spawn every frequency seconds if there are less than max enemies.
@@ -58,7 +58,7 @@ func spawn_enemies():
 
 func get_spawn_position() -> Vector2:
 	#Get player pos and look around in a random dir 400-700 pixels away. find if that place is obstructed somehow...
-	var random_pos: Vector2 = player.global_position + Vector2(randf_range(200, 350), randf_range(200, 350))
+	var random_pos: Vector2 = player.global_position + Vector2(randf_range(100, 200), randf_range(100, 200))
 	random_pos.x = -random_pos.x if coin_toss() else random_pos.x
 	random_pos.y = -random_pos.y if coin_toss() else random_pos.y
 	return random_pos
