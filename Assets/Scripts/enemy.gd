@@ -26,6 +26,7 @@ Vector2.LEFT + Vector2.DOWN]
 var player = null
 var bullet = preload("res://Scenes/bullet.tscn")
 var pickup = preload("res://Scenes/pickup.tscn")
+var dying = false
 
 func _enter_tree():
 	player = get_node("/root/Main/Player")
@@ -111,6 +112,11 @@ func _on_health_component_on_damage_taken():
 func _on_health_component_on_death():
 	# Randomized chance to spawn an upgrade, money or nothing.
 	# Also particles.
+	if dying: return
+	dying = true
+	
+	AudioManager.play("res://Assets/Audio/Explosion.wav")
+	print("Death")
 	var p = pickup.instantiate()
 	var random = randi_range(0, 4)
 	match random:
