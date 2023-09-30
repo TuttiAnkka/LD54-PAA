@@ -6,12 +6,21 @@ var current_state = game_state.paused
 var game_time: float = 0
 var money: int = 0
 var gas: float = 100
+@onready var player = $"../Player"
+
+# Enemy Spawning
+var enemy_spawn_frequency: float = 3
+var max_distance_from_player: float = 3000
+var enemy = preload("res://Scenes/enemy.tscn")
+var can_spawn = true
+# Enemies should spawn every frequency seconds if there are less than max enemies.
+# If enemy gets too far from player, teleport it closer.
 
 # UI
 @onready var death_ui= $"../CanvasLayer/Death"
 @onready var paused_ui = $"../CanvasLayer/Paused"
 @onready var main_menu_ui = $"../CanvasLayer/MainMenu"
-
+@onready var score = $"../CanvasLayer/Death/Score"
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -24,6 +33,7 @@ func _process(delta):
 		paused_ui.visible = true
 		
 	if not get_tree().paused:
+		spawn_enemies()
 		game_time += delta
 		#gas -= delta
 		#print(gas)
@@ -32,6 +42,32 @@ func _process(delta):
 			current_state = game_state.death
 			get_tree().paused = true
 			death_ui.visible = true
+			var score_rounded = "%.0f" % game_time
+			score.text = "Score: " + str(score_rounded)
+
+func spawn_enemies():
+	if not can_spawn: return
+	can_spawn = false
+	
+	var e = enemy.instantiate()
+	get_tree().root.add_child(e)
+	e.global_position = get_spawn_position()
+	
+	await get_tree().create_timer(enemy_spawn_frequency).timeout # Boost cooldown timer.
+	can_spawn = true
+
+func get_spawn_position() -> Vector2:
+	#Get player pos and look around in a random dir 400-700 pixels away. find if that place is obstructed somehow...
+	var random_pos: Vector2 = player.global_position + Vector2(randf_range(250, 450), randf_range(250, 450))
+	random_pos.x = -random_pos.x if coin_toss() else random_pos.x
+	random_pos.y = -random_pos.y if coin_toss() else random_pos.y
+	return random_pos
+	
+func coin_toss() -> int:
+	randomize()
+	var value := randi() % 2 # will be 0 or 1
+	return (value == 1)
+	
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene()

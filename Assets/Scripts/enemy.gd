@@ -23,10 +23,17 @@ Vector2.LEFT + Vector2.DOWN]
 @onready var sprite = $Sprite2D
 @onready var weapon_pivot = $WeaponPivot
 @onready var bullet_spawn = $WeaponPivot/Gun/BulletSpawn
-@onready var player = $"../Player"
+var player = null
 var bullet = preload("res://Scenes/bullet.tscn")
 
+func _enter_tree():
+	player = get_node("/root/Main/Player")
+
 func _physics_process(delta):
+	
+	#if position.distance_to(player.position) > 2000:
+	#	position = get_node("/root/Main/GameManager").get_spawn_position()
+	
 	rotate_sprite()
 	#sprite.position = position # This needs to be enabled once you get final sprites.	
 	drive_randomly(delta)
