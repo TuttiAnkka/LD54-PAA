@@ -4,12 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="1_wv1hu"]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 [ext_resource type="Texture2D" path="res://Assets/Sprites/petesingle.png" id="2_7txnh"]
 >>>>>>> Stashed changes
 =======
 >>>>>>> parent of f189c98 (GraphicsAndShit)
+=======
+[ext_resource type="Texture2D" uid="uid://dppt4oepntbqs" path="res://Assets/Sprites/petesingle.png" id="2_7txnh"]
+>>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
 =======
 [ext_resource type="Texture2D" uid="uid://dppt4oepntbqs" path="res://Assets/Sprites/petesingle.png" id="2_7txnh"]
 >>>>>>> parent of 40372ee (Revert "GraphicsAndShit")

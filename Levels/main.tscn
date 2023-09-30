@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 [gd_scene load_steps=9 format=3 uid="uid://bn6o22xldy6al"]
 =======
@@ -25,18 +26,26 @@
 >>>>>>> Stashed changes
 =======
 [gd_scene load_steps=9 format=3 uid="uid://bn6o22xldy6al"]
+=======
+[gd_scene load_steps=10 format=3 uid="uid://bn6o22xldy6al"]
+>>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
 
-[ext_resource type="Texture2D" uid="uid://jh6hjpwealcf" path="res://Assets/Sprites/road.png" id="1_72v1u"]
-[ext_resource type="PackedScene" uid="uid://dx2i5k00d711h" path="res://Scenes/player.tscn" id="1_nx7qx"]
-[ext_resource type="Texture2D" uid="uid://b6qpqujy6hlvi" path="res://Assets/Sprites/dirt.png" id="2_7opco"]
+[ext_resource type="PackedScene" uid="uid://byb2sv0cbhaw5" path="res://Scenes/player.tscn" id="1_nx7qx"]
+[ext_resource type="Texture2D" uid="uid://c4g1fil27norf" path="res://Assets/Textures/Canvas_Floor.png" id="1_qxuh3"]
 [ext_resource type="Script" path="res://Assets/Scripts/Camera.gd" id="2_7ravu"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://dp32ilae7gob2" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
 >>>>>>> parent of f189c98 (GraphicsAndShit)
 =======
+=======
+>>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
 [ext_resource type="PackedScene" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
 [ext_resource type="Texture2D" uid="uid://bx44eue3xag1k" path="res://Assets/Sprites/Pete.png" id="6_3rnc5"]
 [ext_resource type="Texture2D" uid="uid://bd65poai8sb30" path="res://Assets/Sprites/Puu.png" id="6_l8waw"]
 [ext_resource type="Texture2D" uid="uid://c8qp20ugt6atm" path="res://Assets/Sprites/Rengas.png" id="7_de61r"]
+<<<<<<< HEAD
+>>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
+=======
 >>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so5ye"]
@@ -131,8 +140,11 @@ position = Vector2(605, -134)
 type = 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
 =======
 >>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
 
@@ -165,6 +177,7 @@ texture = ExtResource("7_de61r")
 position = Vector2(-98, 20)
 texture = ExtResource("7_de61r")
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 [node name="RengasKasa" type="Sprite2D" parent="."]
 position = Vector2(-48, -43)
@@ -184,5 +197,7 @@ texture = ExtResource("8_7hooj")
 >>>>>>> Stashed changes
 =======
 >>>>>>> parent of f189c98 (GraphicsAndShit)
+=======
+>>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
 =======
 >>>>>>> parent of 40372ee (Revert "GraphicsAndShit")
