@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx2i5k00d711h"]
+[gd_scene load_steps=9 format=3 uid="uid://dx2i5k00d711h"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_4bao5"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="1_wv1hu"]
+[ext_resource type="Texture2D" uid="uid://cw6535witp3wd" path="res://Assets/Sprites/spike.png" id="3_i5h1l"]
+[ext_resource type="Script" path="res://Assets/Scripts/spikes.gd" id="4_v52lb"]
+[ext_resource type="Texture2D" uid="uid://comuqf6ow6myl" path="res://Assets/Sprites/weapon.png" id="4_xyw6n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p6f83"]
 animations = [{
@@ -17,15 +20,43 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8q1d0"]
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1ogm"]
+size = Vector2(32, 31)
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_4bao5")
 rotation_speed = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+top_level = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_p6f83")
 animation = &"driving"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8q1d0")
+
+[node name="WeaponPivot" type="Node2D" parent="."]
+
+[node name="Spikes" type="Sprite2D" parent="WeaponPivot"]
+position = Vector2(48, 0)
+texture = ExtResource("3_i5h1l")
+script = ExtResource("4_v52lb")
+
+[node name="Area2D" type="Area2D" parent="WeaponPivot/Spikes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/Spikes/Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_q1ogm")
+
+[node name="Weapon" type="Sprite2D" parent="WeaponPivot"]
+process_mode = 4
+visible = false
+position = Vector2(48, 0)
+texture = ExtResource("4_xyw6n")
+
+[node name="BulletSpawn" type="Node2D" parent="WeaponPivot/Weapon"]
+position = Vector2(20, 0)
+
+[connection signal="body_entered" from="WeaponPivot/Spikes/Area2D" to="WeaponPivot/Spikes" method="_on_area_2d_body_entered"]

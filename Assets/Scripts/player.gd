@@ -18,10 +18,13 @@ var can_boost = true
 
 # References
 @onready var anim = $AnimatedSprite2D
+@onready var spikes = $WeaponPivot/Spikes
+@onready var weapon = $WeaponPivot/Weapon
 
 
 func _physics_process(delta):
 	movement(delta)
+	anim.position = position
 
 func movement(delta):
 	
@@ -39,9 +42,9 @@ func movement(delta):
 func rotate_sprite():
 	# Comparing our current forward direction to world right vector.
 	if transform.x.dot(Vector2.RIGHT) < 0:
-		anim.flip_v = true
+		anim.flip_h = true
 	else:
-		anim.flip_v = false
+		anim.flip_h = false
 		
 	# TODO:
 	# We also need to compare to UP vector here..
@@ -56,4 +59,8 @@ func boost():
 		await get_tree().create_timer(boost_cooldown * boost_cooldown_multiplier).timeout # Boost cooldown timer.
 		can_boost = true
 		
-	
+func enable_weapon():
+	spikes.set_process(false)
+	spikes.visible = false
+	weapon.set_process(true)
+	weapon.visible = true
