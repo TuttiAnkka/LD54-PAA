@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh06pl1b1an0x"]
+[gd_scene load_steps=5 format=3 uid="uid://bh06pl1b1an0x"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_b2qe3"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="2_qmxdt"]
+[ext_resource type="Script" path="res://Assets/Scripts/healthcomponent.gd" id="3_3qmv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vc0f"]
 
@@ -17,3 +18,10 @@ texture = ExtResource("2_qmxdt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_6vc0f")
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_3qmv0")
+max_health = 100
+
+[connection signal="on_damage_taken" from="HealthComponent" to="." method="_on_health_component_on_damage_taken"]
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]

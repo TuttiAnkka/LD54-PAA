@@ -7,6 +7,7 @@ var rotation_dir: int = 1 # 0 and 1 for left and right
 var can_turn: bool = true
 @export var speed: float = 100
 var crashing: bool = false
+var can_shoot = true
 
 # 8 move dirs to choose from.
 var directions = [Vector2.LEFT, Vector2.RIGHT, 
@@ -65,3 +66,18 @@ func backwards_force(boost, direction):
 	crashing = false
 	get_new_direction()
 	
+
+func shoot():
+	if not can_shoot: return
+	can_shoot = false
+	# Instantiate bullet, make it fly towards player.
+
+func _on_health_component_on_damage_taken():
+	# Play some sound maybe, spawn particles etc.
+	pass # Replace with function body.
+
+func _on_health_component_on_death():
+	# Randomized chance to spawn an upgrade, money or nothing.
+	# Also particles.
+	queue_free()
+	pass # Replace with function body.
