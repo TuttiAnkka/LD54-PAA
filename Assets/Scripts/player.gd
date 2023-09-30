@@ -20,7 +20,7 @@ var can_boost = true
 @onready var anim = $AnimatedSprite2D
 @onready var spikes = $WeaponPivot/Spikes
 @onready var weapon = $WeaponPivot/Weapon
-
+@onready var car_sound = $AudioStreamPlayer
 
 func _ready():
 	current_speed = speed
@@ -59,9 +59,11 @@ func boost():
 		can_boost = false
 		current_speed = boost_speed
 		spikes.boost = true
+		car_sound.pitch_scale = 3.5
 		await get_tree().create_timer(boost_duration * boost_duration_multiplier).timeout # Boost duration timer.
 		current_speed = speed
 		spikes.boost = false
+		car_sound.pitch_scale = 1.5
 		await get_tree().create_timer(boost_cooldown * boost_cooldown_multiplier).timeout # Boost cooldown timer.
 		can_boost = true
 		

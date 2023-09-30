@@ -1,4 +1,27 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://bk2b3yc7dbf3o"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://bk2b3yc7dbf3o"]
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_ivp7b"]
+resource_name = "PitchShift"
+pitch_scale = 0.61
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_uqqqv"]
+resource_name = "Phaser"
+range_min_hz = 200.0
+range_max_hz = 253.83
+rate_hz = 15.966
+feedback = 0.1
+depth = 0.5
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_h7el2"]
+resource_name = "Reverb"
+room_size = 0.27
+damping = 0.22
+spread = 0.29
+hipass = 0.11
+wet = 0.21
+
+[sub_resource type="AudioEffectRecord" id="AudioEffectRecord_8ujs6"]
+resource_name = "Record"
 
 [resource]
 bus/1/name = &"Sounds"
@@ -13,3 +36,17 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = -24.948
 bus/2/send = &"Master"
+bus/3/name = &"Car"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0672607
+bus/3/send = &"Sounds"
+bus/3/effect/0/effect = SubResource("AudioEffectPitchShift_ivp7b")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectPhaser_uqqqv")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectReverb_h7el2")
+bus/3/effect/2/enabled = false
+bus/3/effect/3/effect = SubResource("AudioEffectRecord_8ujs6")
+bus/3/effect/3/enabled = false

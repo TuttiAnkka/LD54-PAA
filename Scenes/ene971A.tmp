@@ -1,15 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bh06pl1b1an0x"]
+[gd_scene load_steps=6 format=3 uid="uid://bh06pl1b1an0x"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_b2qe3"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="2_qmxdt"]
 [ext_resource type="Script" path="res://Assets/Scripts/healthcomponent.gd" id="3_3qmv0"]
 [ext_resource type="Texture2D" uid="uid://comuqf6ow6myl" path="res://Assets/Sprites/weapon.png" id="4_cjbq2"]
-[ext_resource type="AudioStream" uid="uid://ct01tvlm11khy" path="res://Assets/Audio/Rifle.wav" id="5_whnb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vc0f"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
-process_mode = 1
 position = Vector2(445, -126)
 motion_mode = 1
 script = ExtResource("1_b2qe3")
@@ -34,14 +32,6 @@ texture = ExtResource("4_cjbq2")
 
 [node name="BulletSpawn" type="Node2D" parent="WeaponPivot/Gun"]
 position = Vector2(20, 0)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_whnb6")
-volume_db = 7.376
-max_distance = 750.0
-attenuation = 1.41421
-panning_strength = 0.0
-bus = &"Sounds"
 
 [connection signal="on_damage_taken" from="HealthComponent" to="." method="_on_health_component_on_damage_taken"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
