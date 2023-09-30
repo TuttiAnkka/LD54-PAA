@@ -50,7 +50,7 @@ func spawn_enemies():
 	can_spawn = false
 	
 	var e = enemy.instantiate()
-	get_tree().root.add_child(e)
+	add_child(e) #get_tree().root.
 	e.global_position = get_spawn_position()
 	
 	await get_tree().create_timer(enemy_spawn_frequency).timeout # Boost cooldown timer.
@@ -58,7 +58,7 @@ func spawn_enemies():
 
 func get_spawn_position() -> Vector2:
 	#Get player pos and look around in a random dir 400-700 pixels away. find if that place is obstructed somehow...
-	var random_pos: Vector2 = player.global_position + Vector2(randf_range(250, 450), randf_range(250, 450))
+	var random_pos: Vector2 = player.global_position + Vector2(randf_range(200, 350), randf_range(200, 350))
 	random_pos.x = -random_pos.x if coin_toss() else random_pos.x
 	random_pos.y = -random_pos.y if coin_toss() else random_pos.y
 	return random_pos
