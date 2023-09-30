@@ -70,3 +70,4 @@ func change_weapon_status(status: bool, spread: bool):
 	weapon.visible = status
 	weapon.spread = spread
 	weapon.canshoot = status
+
