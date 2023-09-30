@@ -17,8 +17,8 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func _process(delta):
-	if Input.is_action_just_pressed("pause") && current_state != game_state.death:
-		get_tree().paused = !get_tree().paused
+	if Input.is_action_just_pressed("pause") && current_state == game_state.running:
+		get_tree().paused = true
 		current_state = game_state.paused
 		paused_ui.visible = true
 		
