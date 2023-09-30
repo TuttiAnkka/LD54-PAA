@@ -1,7 +1,7 @@
 extends Sprite2D
 
-var damage: float = 25.0
-var boost_damage: float = 50.0
+@export var damage: float = 25.0
+@export var boost_damage: float = 50.0
 var boost: bool = false
 @onready var player = $"../.."
 

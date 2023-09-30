@@ -9,8 +9,8 @@ var gas: float = 100
 @onready var player = $"../Player"
 
 # Enemy Spawning
-var enemy_spawn_frequency: float = 3
-var max_distance_from_player: float = 3000
+@export var enemy_spawn_frequency: float = 3
+@export var max_distance_from_player: float = 3000
 var enemy = preload("res://Scenes/enemy.tscn")
 var can_spawn = true
 # Enemies should spawn every frequency seconds if there are less than max enemies.

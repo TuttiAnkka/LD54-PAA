@@ -9,8 +9,8 @@ var can_turn: bool = true
 var crashing: bool = false
 var can_shoot = true
 var spread_amount = 0.05
-var bullet_speed = 200
-var turret_timer = 2
+@export var bullet_speed = 200
+@export var turret_timer = 2
 
 # 8 move dirs to choose from.
 var directions = [Vector2.LEFT, Vector2.RIGHT, 
@@ -77,7 +77,7 @@ func rotate_sprite():
 		sprite.flip_h = false
 		
 func backwards_force(boost, direction):
-	var crash_velocity = 950 if boost else 550
+	var crash_velocity = 1250 if boost else 650
 	crashing = true
 	can_turn = false
 	velocity = direction * 550
