@@ -33,7 +33,7 @@ func _physics_process(delta):
 func movement(delta):
 	
 	# Turning the car.
-	var turning = Input.get_axis("ui_left", "ui_right")
+	var turning = Input.get_axis("left", "right")
 	rotation = get_rotation() + (turning * rotation_speed)
 	
 	# Moving the car.
@@ -58,8 +58,10 @@ func boost():
 	if Input.is_action_just_pressed("boost") && can_boost:
 		can_boost = false
 		current_speed = boost_speed
+		spikes.boost = true
 		await get_tree().create_timer(boost_duration * boost_duration_multiplier).timeout # Boost duration timer.
 		current_speed = speed
+		spikes.boost = false
 		await get_tree().create_timer(boost_cooldown * boost_cooldown_multiplier).timeout # Boost cooldown timer.
 		can_boost = true
 		

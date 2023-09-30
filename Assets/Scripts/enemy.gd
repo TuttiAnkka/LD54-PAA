@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 var current_direction: Vector2 = Vector2.LEFT
 @export var new_dir_time: float = 1.25
@@ -6,6 +6,7 @@ var current_direction: Vector2 = Vector2.LEFT
 var rotation_dir: int = 1 # 0 and 1 for left and right 
 var can_turn: bool = true
 @export var speed: float = 100
+var crashing: bool = false
 
 # 8 move dirs to choose from.
 var directions = [Vector2.LEFT, Vector2.RIGHT, 
@@ -21,7 +22,13 @@ func _physics_process(delta):
 	rotate_sprite()
 	#sprite.position = position
 	print(transform.x)
-	position += transform.x * speed * delta
+	#might have to switch to charactercontroller, since move_and_slide has built in collision detection.
+	#position += transform.x * speed * delta
+	
+	if not crashing:
+		velocity = transform.x.normalized() * speed * delta * 100
+		
+	move_and_slide()
 
 	# If we're not facing the currently selected direction, keep turning towards that direction.
 	if transform.x.dot(current_direction) < 0.98 && can_turn: 
@@ -48,3 +55,13 @@ func rotate_sprite():
 		sprite.flip_h = true
 	else:
 		sprite.flip_h = false
+		
+func backwards_force(boost, direction):
+	var crash_velocity = 950 if boost else 550
+	crashing = true
+	can_turn = false
+	velocity = direction * 550
+	await get_tree().create_timer(0.2).timeout # Drive straight for a while.
+	crashing = false
+	get_new_direction()
+	
