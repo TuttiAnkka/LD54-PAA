@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bn6o22xldy6al"]
+[gd_scene load_steps=16 format=3 uid="uid://bn6o22xldy6al"]
 
 [ext_resource type="Texture2D" uid="uid://jh6hjpwealcf" path="res://Assets/Sprites/road.png" id="1_72v1u"]
 [ext_resource type="PackedScene" uid="uid://dx2i5k00d711h" path="res://Scenes/player.tscn" id="1_nx7qx"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b6qpqujy6hlvi" path="res://Assets/Sprites/dirt.png" id="2_7opco"]
 [ext_resource type="Script" path="res://Assets/Scripts/Camera.gd" id="2_7ravu"]
 [ext_resource type="PackedScene" uid="uid://dp32ilae7gob2" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
+[ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="5_k0ivx"]
 [ext_resource type="Script" path="res://Assets/Scripts/volume_slider.gd" id="6_ug27u"]
+[ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="8_g61vu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb0sl"]
 texture = ExtResource("1_72v1u")
@@ -37,6 +39,8 @@ outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 shadow_color = Color(0, 0, 0, 0.933333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vc0f"]
 
 [node name="Main" type="Node2D"]
 
@@ -293,6 +297,18 @@ text = "EXIT"
 [node name="GameManager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("1_tkpbp")
+
+[node name="Enemy" type="StaticBody2D" parent="."]
+position = Vector2(400, 0)
+script = ExtResource("8_g61vu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_k0ivx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_6vc0f")
 
 [connection signal="pressed" from="CanvasLayer/Death/Restart" to="GameManager" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Death/Exit" to="GameManager" method="_on_exit_pressed"]

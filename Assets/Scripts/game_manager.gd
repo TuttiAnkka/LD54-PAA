@@ -24,8 +24,8 @@ func _process(delta):
 		
 	if not get_tree().paused:
 		game_time += delta
-		gas -= delta
-		print(gas)
+		#gas -= delta
+		#print(gas)
 		
 		if gas <= 0:
 			current_state = game_state.death
