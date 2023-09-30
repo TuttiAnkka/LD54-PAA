@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 [gd_scene load_steps=9 format=3 uid="uid://bn6o22xldy6al"]
 
@@ -18,6 +19,15 @@
 [ext_resource type="Texture2D" uid="uid://c8qp20ugt6atm" path="res://Assets/Sprites/Rengas.png" id="7_de61r"]
 [ext_resource type="Texture2D" uid="uid://dx6s3s6dn2maa" path="res://Assets/Sprites/RengasKasa.png" id="8_7hooj"]
 >>>>>>> Stashed changes
+=======
+[gd_scene load_steps=9 format=3 uid="uid://bn6o22xldy6al"]
+
+[ext_resource type="Texture2D" uid="uid://jh6hjpwealcf" path="res://Assets/Sprites/road.png" id="1_72v1u"]
+[ext_resource type="PackedScene" uid="uid://dx2i5k00d711h" path="res://Scenes/player.tscn" id="1_nx7qx"]
+[ext_resource type="Texture2D" uid="uid://b6qpqujy6hlvi" path="res://Assets/Sprites/dirt.png" id="2_7opco"]
+[ext_resource type="Script" path="res://Assets/Scripts/Camera.gd" id="2_7ravu"]
+[ext_resource type="PackedScene" uid="uid://dp32ilae7gob2" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
+>>>>>>> parent of f189c98 (GraphicsAndShit)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb0sl"]
 texture = ExtResource("1_72v1u")
@@ -54,6 +64,7 @@ script = ExtResource("2_7ravu")
 [node name="Pickup2" parent="." instance=ExtResource("5_5eqw4")]
 position = Vector2(605, -134)
 type = 0
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 
@@ -102,3 +113,5 @@ texture = ExtResource("8_7hooj")
 position = Vector2(121, 82)
 texture = ExtResource("8_7hooj")
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of f189c98 (GraphicsAndShit)
