@@ -5,10 +5,7 @@ extends Camera2D
 @export var position_offset: float = 100.0
 
 func _physics_process(delta):
-	#var target_pos_x = player.global_position.x + (player.transform.x * 10)
-	#var target_pos_y = player.global_position.y + (player.transform.y * 10)
-	
 	var target_pos = player.global_position + (player.transform.x.normalized() * position_offset)
-	
-	global_position = lerp(global_position, target_pos, speed * delta)
-	#global_position.y = lerp(global_position.y, target_pos_y, speed * delta)
+	#global_position = lerp(global_position, target_pos, speed * delta) # Lerp doesn't seem to be needed here, since we want camera to stay on player.
+	global_position = target_pos
+

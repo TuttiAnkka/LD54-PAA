@@ -30,7 +30,7 @@ func movement(delta):
 	rotation = get_rotation() + (turning * rotation_speed)
 	
 	# Moving the car.
-	velocity = transform.x.normalized() * current_speed * delta * 100
+	velocity = transform.x.normalized() * current_speed * delta * 100 * speed_multiplier
 	move_and_slide()
 	
 	rotate_sprite()
@@ -42,6 +42,10 @@ func rotate_sprite():
 		anim.flip_v = true
 	else:
 		anim.flip_v = false
+		
+	# TODO:
+	# We also need to compare to UP vector here..
+	# If less than 0, means we're going down. That way we can combine up and down directions to select right sprite
 	
 func boost():
 	if Input.is_action_just_pressed("boost") && can_boost:
@@ -51,4 +55,5 @@ func boost():
 		current_speed = speed
 		await get_tree().create_timer(boost_cooldown * boost_cooldown_multiplier).timeout # Boost cooldown timer.
 		can_boost = true
+		
 	
