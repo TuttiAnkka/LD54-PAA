@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn6o22xldy6al"]
+[gd_scene load_steps=14 format=3 uid="uid://bn6o22xldy6al"]
 
 [ext_resource type="Texture2D" uid="uid://jh6hjpwealcf" path="res://Assets/Sprites/road.png" id="1_72v1u"]
 [ext_resource type="PackedScene" uid="uid://dx2i5k00d711h" path="res://Scenes/player.tscn" id="1_nx7qx"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dp32ilae7gob2" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
 [ext_resource type="Script" path="res://Assets/Scripts/volume_slider.gd" id="6_ug27u"]
 [ext_resource type="PackedScene" uid="uid://bh06pl1b1an0x" path="res://Scenes/enemy.tscn" id="8_bt63o"]
-[ext_resource type="AudioStream" uid="uid://dlmlve0tweuma" path="res://Assets/Audio/LevelMusic.wav" id="9_7a11a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb0sl"]
 texture = ExtResource("1_72v1u")
@@ -441,8 +440,6 @@ script = ExtResource("1_tkpbp")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("9_7a11a")
-autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="CanvasLayer/Death/Restart" to="GameManager" method="_on_restart_pressed"]
