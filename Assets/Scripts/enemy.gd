@@ -92,7 +92,7 @@ func shoot():
 	can_shoot = false
 	
 	var b = bullet.instantiate()
-	get_tree().get_root().add_child(b)
+	get_node("/root/Main/GameManager").add_child(b)
 	b.damage_player = true
 	b.speed = bullet_speed
 	b.global_position = bullet_spawn.global_position
