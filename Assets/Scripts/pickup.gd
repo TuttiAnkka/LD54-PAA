@@ -8,8 +8,13 @@ enum types {shotgun, rifle, boost_cooldown, boost_duration, speed, money, gas}
 @export var boost_duration_multiplier_change: float = 0.1
 @export var speed_multiplier_change: float = 0.1
 
-@onready var game_manager = $"../GameManager"
+var game_manager = null
 
+func _enter_tree():
+	game_manager = get_node("/root/Main/GameManager")
+func _ready():
+	game_manager = get_node("/root/Main/GameManager")
+	
 func _on_area_2d_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Player"):
 		if game_manager.money >= price && type != types.money:

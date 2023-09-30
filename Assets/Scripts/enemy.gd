@@ -25,6 +25,7 @@ Vector2.LEFT + Vector2.DOWN]
 @onready var bullet_spawn = $WeaponPivot/Gun/BulletSpawn
 var player = null
 var bullet = preload("res://Scenes/bullet.tscn")
+var pickup = preload("res://Scenes/pickup.tscn")
 
 func _enter_tree():
 	player = get_node("/root/Main/Player")
@@ -110,5 +111,32 @@ func _on_health_component_on_damage_taken():
 func _on_health_component_on_death():
 	# Randomized chance to spawn an upgrade, money or nothing.
 	# Also particles.
+	var p = pickup.instantiate()
+	var random = randi_range(0, 4)
+	match random:
+		0:
+			p.type = p.types.money
+			print("money")
+			pass
+		1:
+			p.type = p.types.speed
+			print("speed")
+			pass
+		2:
+			p.type = p.types.gas
+			print("gas")
+			pass
+		3:
+			p.type = p.types.shotgun
+			print("shotgun")
+			pass
+		4:
+			p.type = p.types.rifle
+			print("rifle")
+			pass
+	
+	get_node("/root/Main/GameManager").add_child(p) #get_tree().root.
+	p.global_position = global_position
+	
 	queue_free()
 	pass # Replace with function body.
