@@ -5,7 +5,7 @@ enum game_state { running, death, paused }
 var current_state = game_state.running
 var game_time: float = 0
 var money: int = 0
-var gas: float = 10
+var gas: float = 100
 
 # UI
 @onready var death_ui= $"../CanvasLayer/Death"
