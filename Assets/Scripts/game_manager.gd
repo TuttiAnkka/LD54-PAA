@@ -48,7 +48,7 @@ func _process(delta):
 func spawn_enemies():
 	if not can_spawn: return
 	can_spawn = false
-	
+	print("Spawned an enemy")
 	var e = enemy.instantiate()
 	add_child(e) #get_tree().root.
 	e.global_position = get_spawn_position()

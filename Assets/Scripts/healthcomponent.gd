@@ -9,7 +9,7 @@ func _ready():
 
 func _take_damage(amount):
 	health -= amount
-	emit_signal("on_damage_taken", amount)
+	emit_signal("on_damage_taken")
 	if health <= 0:
 		emit_signal("on_death")
 		
