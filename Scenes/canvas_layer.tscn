@@ -1,0 +1,393 @@
+[gd_scene load_steps=4 format=3 uid="uid://0bjtuqc6bp32"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/volume_slider.gd" id="1_o1y1p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8b17"]
+font_size = 31
+font_color = Color(0.960784, 0.87451, 0.784314, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.933333)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8cjsq"]
+font_color = Color(0.960784, 0.87451, 0.784314, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.933333)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Death" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Death"]
+layout_mode = 0
+offset_left = -195.0
+offset_top = -143.0
+offset_right = 235.0
+offset_bottom = 183.0
+color = Color(0.239216, 0.239216, 0.239216, 0.909804)
+
+[node name="Failed" type="Label" parent="Death"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -117.0
+offset_right = 88.5
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU RAN OUT OF FUEL!"
+label_settings = SubResource("LabelSettings_x8b17")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Death"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.5
+offset_top = -53.0
+offset_right = 175.5
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: 1000"
+label_settings = SubResource("LabelSettings_x8b17")
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="Death"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 56.0
+offset_right = 50.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESTART"
+
+[node name="Exit" type="Button" parent="Death"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 97.0
+offset_right = 50.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+
+[node name="Paused" type="Control" parent="."]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Paused"]
+layout_mode = 0
+offset_left = -195.0
+offset_top = -143.0
+offset_right = 235.0
+offset_bottom = 183.0
+color = Color(0.239216, 0.239216, 0.239216, 0.909804)
+
+[node name="Paused" type="Label" parent="Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -117.0
+offset_right = 88.5
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME PAUSED"
+label_settings = SubResource("LabelSettings_x8b17")
+horizontal_alignment = 1
+
+[node name="Sound" type="Label" parent="Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -49.0
+offset_right = 107.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "sound"
+label_settings = SubResource("LabelSettings_8cjsq")
+horizontal_alignment = 1
+
+[node name="SoundVolume" type="HSlider" parent="Paused/Sound"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -3.5
+offset_right = 58.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_o1y1p")
+bus_name = "Sounds"
+
+[node name="Music" type="Label" parent="Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -8.0
+offset_right = 107.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "music"
+label_settings = SubResource("LabelSettings_8cjsq")
+horizontal_alignment = 1
+
+[node name="MusicVolume" type="HSlider" parent="Paused/Music"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -3.5
+offset_right = 58.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_o1y1p")
+bus_name = "Music"
+
+[node name="Continue" type="Button" parent="Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 56.0
+offset_right = 50.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONTINUE"
+
+[node name="Exit" type="Button" parent="Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 97.0
+offset_right = 50.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+
+[node name="MainMenu" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu"]
+layout_mode = 0
+offset_left = -379.0
+offset_top = -300.0
+offset_right = 419.0
+offset_bottom = 340.0
+color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="Paused" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -117.0
+offset_right = 88.5
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME NAME"
+label_settings = SubResource("LabelSettings_x8b17")
+horizontal_alignment = 1
+
+[node name="Sound" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -49.0
+offset_right = 107.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "sound"
+label_settings = SubResource("LabelSettings_8cjsq")
+horizontal_alignment = 1
+
+[node name="SoundVolume" type="HSlider" parent="MainMenu/Sound"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -3.5
+offset_right = 58.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_o1y1p")
+bus_name = "Sounds"
+
+[node name="Music" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -8.0
+offset_right = 107.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "music"
+label_settings = SubResource("LabelSettings_8cjsq")
+horizontal_alignment = 1
+
+[node name="MusicVolume" type="HSlider" parent="MainMenu/Music"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -3.5
+offset_right = 58.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_o1y1p")
+bus_name = "Music"
+
+[node name="Continue" type="Button" parent="MainMenu"]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 56.0
+offset_right = 50.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+
+[node name="Exit" type="Button" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 97.0
+offset_right = 50.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+
+[connection signal="visibility_changed" from="Paused" to="Paused/Sound/SoundVolume" method="_on_paused_visibility_changed"]
+[connection signal="visibility_changed" from="Paused" to="Paused/Music/MusicVolume" method="_on_paused_visibility_changed"]

@@ -2,7 +2,7 @@ extends Node
 
 # Game Properties
 enum game_state { running, death, paused }
-var current_state = game_state.running
+var current_state = game_state.paused
 var game_time: float = 0
 var money: int = 0
 var gas: float = 100
@@ -10,11 +10,12 @@ var gas: float = 100
 # UI
 @onready var death_ui= $"../CanvasLayer/Death"
 @onready var paused_ui = $"../CanvasLayer/Paused"
-
+@onready var main_menu_ui = $"../CanvasLayer/MainMenu"
 
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
 	
 func _process(delta):
 	if Input.is_action_just_pressed("pause") && current_state == game_state.running:
@@ -43,4 +44,5 @@ func _on_exit_pressed():
 func _on_continue_pressed():
 	get_tree().paused = false
 	paused_ui.visible = false
+	main_menu_ui.visible = false
 	current_state = game_state.running
