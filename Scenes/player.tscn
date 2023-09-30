@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_4bao5"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="1_wv1hu"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="Texture2D" path="res://Assets/Sprites/petesingle.png" id="2_7txnh"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://cw6535witp3wd" path="res://Assets/Sprites/spike.png" id="3_i5h1l"]
 [ext_resource type="Script" path="res://Assets/Scripts/spikes.gd" id="4_v52lb"]
 [ext_resource type="Texture2D" uid="uid://comuqf6ow6myl" path="res://Assets/Sprites/weapon.png" id="4_xyw6n"]

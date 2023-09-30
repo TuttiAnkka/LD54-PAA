@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=9 format=3 uid="uid://bn6o22xldy6al"]
 
 [ext_resource type="Texture2D" uid="uid://jh6hjpwealcf" path="res://Assets/Sprites/road.png" id="1_72v1u"]
@@ -5,6 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://b6qpqujy6hlvi" path="res://Assets/Sprites/dirt.png" id="2_7opco"]
 [ext_resource type="Script" path="res://Assets/Scripts/Camera.gd" id="2_7ravu"]
 [ext_resource type="PackedScene" uid="uid://dp32ilae7gob2" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
+=======
+[gd_scene load_steps=11 format=3 uid="uid://bn6o22xldy6al"]
+
+[ext_resource type="PackedScene" uid="uid://byb2sv0cbhaw5" path="res://Scenes/player.tscn" id="1_nx7qx"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/Canvas_Floor.png" id="1_qxuh3"]
+[ext_resource type="Script" path="res://Assets/Scripts/Camera.gd" id="2_7ravu"]
+[ext_resource type="PackedScene" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Pete.png" id="6_3rnc5"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Puu.png" id="6_l8waw"]
+[ext_resource type="Texture2D" uid="uid://c8qp20ugt6atm" path="res://Assets/Sprites/Rengas.png" id="7_de61r"]
+[ext_resource type="Texture2D" uid="uid://dx6s3s6dn2maa" path="res://Assets/Sprites/RengasKasa.png" id="8_7hooj"]
+>>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sb0sl"]
 texture = ExtResource("1_72v1u")
@@ -41,3 +54,51 @@ script = ExtResource("2_7ravu")
 [node name="Pickup2" parent="." instance=ExtResource("5_5eqw4")]
 position = Vector2(605, -134)
 type = 0
+<<<<<<< Updated upstream
+=======
+
+[node name="Pete" type="Sprite2D" parent="."]
+position = Vector2(378, 158)
+texture = ExtResource("6_3rnc5")
+
+[node name="Pete2" type="Sprite2D" parent="."]
+position = Vector2(345, 110)
+rotation = 0.48545
+texture = ExtResource("6_3rnc5")
+
+[node name="Puu" type="Sprite2D" parent="."]
+position = Vector2(284, -98)
+texture = ExtResource("6_l8waw")
+
+[node name="Puu2" type="Sprite2D" parent="."]
+position = Vector2(59, 97)
+texture = ExtResource("6_l8waw")
+
+[node name="Puu3" type="Sprite2D" parent="."]
+position = Vector2(393, 336)
+texture = ExtResource("6_l8waw")
+
+[node name="Rengas" type="Sprite2D" parent="."]
+position = Vector2(106, 302)
+texture = ExtResource("7_de61r")
+
+[node name="Rengas2" type="Sprite2D" parent="."]
+position = Vector2(-98, 20)
+texture = ExtResource("7_de61r")
+
+[node name="RengasKasa" type="Sprite2D" parent="."]
+position = Vector2(-48, -43)
+texture = ExtResource("8_7hooj")
+
+[node name="RengasKasa2" type="Sprite2D" parent="."]
+position = Vector2(-99, -28)
+texture = ExtResource("8_7hooj")
+
+[node name="RengasKasa3" type="Sprite2D" parent="."]
+position = Vector2(258, -30)
+texture = ExtResource("8_7hooj")
+
+[node name="RengasKasa4" type="Sprite2D" parent="."]
+position = Vector2(121, 82)
+texture = ExtResource("8_7hooj")
+>>>>>>> Stashed changes
