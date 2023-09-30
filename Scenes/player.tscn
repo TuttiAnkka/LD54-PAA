@@ -71,4 +71,7 @@ pitch_scale = 1.5
 autoplay = true
 bus = &"Car"
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [connection signal="body_entered" from="WeaponPivot/Spikes/Area2D" to="WeaponPivot/Spikes" method="_on_area_2d_body_entered"]

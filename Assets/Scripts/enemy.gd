@@ -27,6 +27,7 @@ var player = null
 var bullet = preload("res://Scenes/bullet.tscn")
 var pickup = preload("res://Scenes/pickup.tscn")
 var dying = false
+@onready var gun_sound = $AudioStreamPlayer2D
 
 func _enter_tree():
 	player = get_node("/root/Main/Player")
@@ -91,6 +92,8 @@ func shoot():
 	if not can_shoot: return
 	if position.distance_to(player.position) > 600: return
 	can_shoot = false
+	
+	gun_sound.play()
 	
 	var b = bullet.instantiate()
 	get_node("/root/Main/GameManager").add_child(b)
