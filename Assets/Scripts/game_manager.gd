@@ -8,11 +8,6 @@ var money: int = 0
 var gas: float = 10
 
 # UI
-var sound_volume = 50
-var music_volume = 50
-@onready var sound_volume_slider = $"../CanvasLayer/Paused/Sound/SoundVolume"
-@onready var music_volume_slider = $"../CanvasLayer/Paused/Music/MusicVolume"
-
 @onready var death_ui= $"../CanvasLayer/Death"
 @onready var paused_ui = $"../CanvasLayer/Paused"
 
@@ -20,8 +15,6 @@ var music_volume = 50
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	music_volume_slider.value = 50
-	sound_volume_slider.value = 50
 	
 func _process(delta):
 	if Input.is_action_just_pressed("pause") && current_state != game_state.death:
