@@ -106,7 +106,11 @@ scale = Vector2(0.145, 0.145)
 texture = ExtResource("1_wv1hu")
 
 [node name="SmokeEmitter" parent="." instance=ExtResource("9_abdin")]
-spread = 12.0
+spread = 5.0
+frequency = 0.04
+decay_time = 0.95
+lerp_speed = 12.0
+scale_range = Vector2(0.53, 0.66)
 
 [connection signal="body_entered" from="WeaponPivot/Spikes/Area2D" to="WeaponPivot/Spikes" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="WeaponPivot/Spikes/Area2D" to="WeaponPivot/Spikes" method="_on_area_2d_body_exited"]

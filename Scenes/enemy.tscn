@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh06pl1b1an0x"]
+[gd_scene load_steps=13 format=3 uid="uid://bh06pl1b1an0x"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_b2qe3"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="2_qmxdt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" uid="uid://clbkgnlusl7bj" path="res://Assets/Shaders/Car.tres" id="7_xm2s6"]
 [ext_resource type="Texture2D" uid="uid://2arv5ssl4i3d" path="res://Assets/Sprites/Pete.png" id="8_0qcxe"]
 [ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="8_345u4"]
+[ext_resource type="PackedScene" uid="uid://db414y6o0yg86" path="res://Scenes/smoke_emitter.tscn" id="10_msc6h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hr8ml"]
 resource_local_to_scene = true
@@ -89,6 +90,17 @@ hit_from_inside = true
 position = Vector2(-25, 0)
 target_position = Vector2(-50, 0)
 hit_from_inside = true
+
+[node name="SmokeEmitter" parent="." instance=ExtResource("10_msc6h")]
+visible = false
+position = Vector2(-28, 0)
+spread = 5.0
+frequency = 0.04
+current_frame = 7
+decay_time = 0.95
+lerp_speed = 10.0
+scale_range = Vector2(0.27, 0.47)
+health_based = false
 
 [connection signal="on_damage_taken" from="HealthComponent" to="." method="_on_health_component_on_damage_taken"]
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]

@@ -30,6 +30,7 @@ var bullet = preload("res://Scenes/bullet.tscn")
 var pickup = preload("res://Scenes/pickup.tscn")
 var dying = false
 @onready var gun_sound = $AudioStreamPlayer2D
+@onready var smoke_emitter = $SmokeEmitter
 
 var spawned = false
 @onready var ray1 = $Rays/RayCast2D
@@ -53,6 +54,9 @@ func _enter_tree():
 	spawned = false
 	mesh2d.visible = true
 	weapon_pivot.visible = true
+	smoke_emitter.visible = true
+	
+	await get_tree().create_timer(1.75).timeout # Just to make sure raycasts are getting through
 	can_shoot = true
 
 func _physics_process(delta):

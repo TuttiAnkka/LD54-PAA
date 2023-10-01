@@ -1,8 +1,12 @@
 extends Node2D
 
-@export var spread: float = 10
+@export var spread: float = 10.0
 @export var frequency: float = 0.1
 @export var current_frame: int = 15
+@export var decay_time = 0.85
+@export var rotation_speed = 2.0
+@export var lerp_speed = 25.0
+@export var scale_range: Vector2 = Vector2(1,1)
 
 var manager = null
 var since_last_change = 0
@@ -24,6 +28,12 @@ func emit_smoke():
 	add_child(s)
 	s.global_position = global_position + Vector2(randf_range(-spread, spread), randf_range(-spread, spread))
 	s.frame = current_frame
+	s.decay_time = decay_time
+	s.rotation_speed = rotation_speed
+	s.lerp_speed = lerp_speed
+	var random = randf_range(scale_range.x, scale_range.y)
+	s.scale.x = random
+	s.scale.y = random
 	await get_tree().create_timer(frequency).timeout
 	emit_smoke()
 	pass

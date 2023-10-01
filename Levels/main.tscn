@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bn6o22xldy6al"]
+[gd_scene load_steps=17 format=3 uid="uid://bn6o22xldy6al"]
 
 [ext_resource type="Texture2D" uid="uid://ilkfcqg6v8o2" path="res://Assets/Textures/Canvas_Floor.png" id="1_m4pop"]
 [ext_resource type="PackedScene" uid="uid://dx2i5k00d711h" path="res://Scenes/player.tscn" id="1_nx7qx"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://Assets/Scripts/volume_slider.gd" id="6_ug27u"]
 [ext_resource type="PackedScene" uid="uid://thxkl5b51ly7" path="res://Assets/Prefabs/night_plane.tscn" id="8_h71nk"]
 [ext_resource type="Script" path="res://Assets/Scripts/night_plane.gd" id="9_7tuuw"]
-[ext_resource type="PackedScene" uid="uid://db414y6o0yg86" path="res://Scenes/smoke_emitter.tscn" id="13_77oo1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dkry"]
 texture = ExtResource("1_m4pop")
@@ -693,7 +692,7 @@ text = "EXIT"
 [node name="GameManager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("1_tkpbp")
-enemy_spawn_frequency = 2.0
+enemy_spawn_frequency = 4.5
 max_distance_from_player = 1000.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -708,12 +707,6 @@ price = 4
 position = Vector2(-173, 64)
 type = 0
 price = 2
-
-[node name="SmokeEmitter" parent="." instance=ExtResource("13_77oo1")]
-position = Vector2(-737, 186)
-spread = 20.0
-frequency = 0.05
-health_based = false
 
 [connection signal="pressed" from="CanvasLayer/Death/Restart" to="GameManager" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Death/Exit" to="GameManager" method="_on_exit_pressed"]
