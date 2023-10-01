@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://dbdtur0u0dip4"]
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://clbkgnlusl7bj"]
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_5n0nq"]
 default_input_values = [0, Quaternion(0, 0, 0, 0)]
@@ -76,7 +76,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-737.53, 166.297)
 mode = 1
 flags/unshaded = true
 flags/light_only = false

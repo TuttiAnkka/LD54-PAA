@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://53c04823pifh"]
+[gd_scene load_steps=21 format=3 uid="uid://53c04823pifh"]
 
 [ext_resource type="Texture2D" uid="uid://lbttispqe05y" path="res://Assets/Sprites/Savu.png" id="1_srfbn"]
+[ext_resource type="Texture2D" uid="uid://dp5brgtd5trlv" path="res://Assets/Sprites/Polypilvi.png" id="2_e80ae"]
 [ext_resource type="Script" path="res://Assets/Scripts/smoke.gd" id="2_ppxdx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5sts6"]
@@ -117,6 +118,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7ef8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e80ae")
 }],
 "loop": true,
 "name": &"default",

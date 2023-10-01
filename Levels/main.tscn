@@ -377,6 +377,23 @@ text = "SCORE: 1000"
 label_settings = SubResource("LabelSettings_x8b17")
 horizontal_alignment = 1
 
+[node name="HighScore" type="Label" parent="CanvasLayer/Death"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.5
+offset_top = -18.535
+offset_right = 175.5
+offset_bottom = 28.465
+grow_horizontal = 2
+grow_vertical = 2
+text = "HIGHSCORE: 1000"
+label_settings = SubResource("LabelSettings_x8b17")
+horizontal_alignment = 1
+
 [node name="Restart" type="Button" parent="CanvasLayer/Death"]
 layout_mode = 1
 anchors_preset = 8

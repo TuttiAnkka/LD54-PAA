@@ -24,7 +24,7 @@ var can_boost = true
 
 func _ready():
 	current_speed = speed
-	print(speed)
+	#print(speed)
 
 func _physics_process(delta):
 	movement(delta)

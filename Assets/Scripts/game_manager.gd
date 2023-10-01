@@ -23,11 +23,13 @@ var can_spawn = true
 @onready var paused_ui = $"../CanvasLayer/Paused"
 @onready var main_menu_ui = $"../CanvasLayer/MainMenu"
 @onready var score = $"../CanvasLayer/Death/Score"
+@onready var high_score = $"../CanvasLayer/Death/HighScore"
 
 func _ready():
 	consume_fuel()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
+	print("Highscore: ", FileManager.load_game())
 	
 func consume_fuel():
 	await get_tree().create_timer(1).timeout
@@ -55,7 +57,9 @@ func _process(delta):
 			death_ui.visible = true
 			var score_rounded = "%.0f" % game_time
 			score.text = "Score: " + str(score_rounded)
-
+			FileManager.save(score_rounded)
+			high_score.text = "Highscore: " + str(FileManager.load_game()) 
+			
 func spawn_enemies():
 	if not can_spawn: return
 	can_spawn = false
