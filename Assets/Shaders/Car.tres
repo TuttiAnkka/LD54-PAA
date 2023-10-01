@@ -1,0 +1,98 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://dbdtur0u0dip4"]
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_5n0nq"]
+default_input_values = [0, Quaternion(0, 0, 0, 0)]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_6iagr"]
+parameter_name = "Direction"
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_0jgji"]
+default_input_values = [1, Vector2(3, 0), 2, Vector2(1, 1)]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_mq65f"]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tkc31"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_5mqm2"]
+parameter_name = "Car_Texture"
+texture_type = 1
+color_default = 2
+texture_filter = 1
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_y7eqh"]
+default_input_values = [1, Vector2(0.125, 1), 2, Vector2(0, 0)]
+function = 1
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix, unshaded;
+
+uniform float Direction;
+uniform sampler2D Car_Texture : source_color, hint_default_transparent, filter_nearest;
+
+
+
+void fragment() {
+// FloatParameter:12
+	float n_out12p0 = Direction;
+
+
+// VectorCompose:14
+	float n_in14p1 = 0.00000;
+	vec2 n_out14p0 = vec2(n_out12p0, n_in14p1);
+
+
+// UVFunc:13
+	vec2 n_in13p2 = vec2(1.00000, 1.00000);
+	vec2 n_out13p0 = n_in13p2 * n_out14p0 + UV;
+
+
+// UVFunc:4
+	vec2 n_in4p1 = vec2(0.12500, 1.00000);
+	vec2 n_in4p2 = vec2(0.00000, 0.00000);
+	vec2 n_out4p0 = (n_out13p0 - n_in4p2) * n_in4p1 + n_in4p2;
+
+
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Car_Texture, n_out4p0);
+
+
+// VectorDecompose:11
+	float n_out11p0 = n_out2p0.x;
+	float n_out11p1 = n_out2p0.y;
+	float n_out11p2 = n_out2p0.z;
+	float n_out11p3 = n_out2p0.w;
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out2p0.xyz);
+	COLOR.a = n_out11p3;
+
+
+}
+"
+graph_offset = Vector2(-737.53, 166.297)
+mode = 1
+flags/unshaded = true
+flags/light_only = false
+nodes/fragment/0/position = Vector2(640, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_tkc31")
+nodes/fragment/2/position = Vector2(67.711, 239.46)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_5mqm2")
+nodes/fragment/3/position = Vector2(-460, 380)
+nodes/fragment/4/node = SubResource("VisualShaderNodeUVFunc_y7eqh")
+nodes/fragment/4/position = Vector2(-380, 180)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorDecompose_5n0nq")
+nodes/fragment/11/position = Vector2(320, 340)
+nodes/fragment/12/node = SubResource("VisualShaderNodeFloatParameter_6iagr")
+nodes/fragment/12/position = Vector2(-1320, 220)
+nodes/fragment/13/node = SubResource("VisualShaderNodeUVFunc_0jgji")
+nodes/fragment/13/position = Vector2(-700, 160)
+nodes/fragment/14/node = SubResource("VisualShaderNodeVectorCompose_mq65f")
+nodes/fragment/14/position = Vector2(-960, 240)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 4, 0, 2, 0, 2, 0, 0, 0, 2, 0, 11, 0, 11, 3, 0, 1, 13, 0, 4, 0, 12, 0, 14, 0, 14, 0, 13, 1)
