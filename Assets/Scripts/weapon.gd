@@ -17,6 +17,7 @@ func _process(delta):
 		canshoot = false
 		
 		if spread:
+			AudioManager.play("res://Assets/Audio/Shotgun.wav")
 			for i in range(bullets):
 				# Shooting sound
 				# Animation
@@ -27,7 +28,7 @@ func _process(delta):
 				b.direction = player.transform.x + (player.transform.y * randf_range(-spread_amount, spread_amount))
 		else:
 			for i in range(bullets):
-				# Shooting sound
+				AudioManager.play("res://Assets/Audio/Rifle.wav")
 				# Animation
 				var b = bullet.instantiate()
 				get_tree().root.add_child(b)
