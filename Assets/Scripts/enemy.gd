@@ -13,13 +13,15 @@ var spread_amount = 0.05
 @export var turret_timer = 2
 
 # 8 move dirs to choose from.
-var directions = [Vector2.LEFT, Vector2.RIGHT, 
+var directions = [
+Vector2.LEFT, Vector2.RIGHT, 
 Vector2.UP, Vector2.DOWN, 
 Vector2.RIGHT + Vector2.UP,
 Vector2.RIGHT + Vector2.DOWN,
 Vector2.LEFT + Vector2.UP,
 Vector2.LEFT + Vector2.DOWN]
 
+@onready var mesh2d = $Enemy_Pete
 @onready var sprite = $Sprite2D
 @onready var weapon_pivot = $WeaponPivot
 @onready var bullet_spawn = $WeaponPivot/Gun/BulletSpawn
@@ -30,18 +32,45 @@ var dying = false
 @onready var gun_sound = $AudioStreamPlayer2D
 
 var spawned = false
-@onready var ray1 = $RayCast2D
-@onready var ray2 = $RayCast2D2
-@onready var ray3 = $RayCast2D3
-@onready var ray4 = $RayCast2D4
+@onready var ray1 = $Rays/RayCast2D
+@onready var ray2 = $Rays/RayCast2D2
+@onready var ray3 = $Rays/RayCast2D3
+@onready var ray4 = $Rays/RayCast2D4
+
+var sprite_dirs: Array[Vector2] = [
+	Vector2(1, 0), # Right
+	Vector2(-1, 0), # Left,
+	Vector2(0, 1),  # Up
+	Vector2(0, -1), # Down
+	
+	Vector2(0.5, 0.5), # Right Up
+	Vector2(0.5, -0.5), # Right Down
+	Vector2(-0.5, 0.5), # Left Up
+	Vector2(-0.5, -0.5), # Left Down
+	
+	Vector2.RIGHT + Vector2.UP,
+	Vector2.RIGHT + Vector2.DOWN,
+	Vector2.LEFT + Vector2.UP,
+	Vector2.LEFT + Vector2.DOWN
+	]
 
 
 func _enter_tree():
 	player = get_node("/root/Main/Player")
+	
+	var normalised_directions = directions
+	print("not normal ", normalised_directions)
+	for i in range(normalised_directions.size()):
+		normalised_directions[i] = normalised_directions[i].normalized()
+	print("normal ", normalised_directions)
+	directions = normalised_directions
+	print("new dirs ", directions)
+	
 	spawned = true
-	await get_tree().create_timer(0.25).timeout # Just to make sure raycasts are getting through
+	await get_tree().create_timer(0.15).timeout # Just to make sure raycasts are getting through
 	spawned = false
-
+	mesh2d.visible = true
+	weapon_pivot.visible = true
 
 func _physics_process(delta):
 	
@@ -49,7 +78,7 @@ func _physics_process(delta):
 	#	position = get_node("/root/Main/GameManager").get_spawn_position()
 	
 	rotate_sprite()
-	#sprite.position = position # This needs to be enabled once you get final sprites.	
+	mesh2d.position = position # This needs to be enabled once you get final sprites.	
 	drive_randomly(delta)
 	aim_at_player(delta)
 	shoot()
@@ -113,10 +142,64 @@ func coin_toss() -> int:
 
 func rotate_sprite():
 	# Comparing our current forward direction to world right vector.
-	if transform.x.dot(Vector2.RIGHT) < 0:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+	#if transform.x.dot(Vector2.RIGHT) < 0:
+	#	sprite.flip_h = true
+	#else:
+	#	sprite.flip_h = false
+		
+	var shadermat = mesh2d.material
+	match get_closest_direction_vector():
+		0:
+			shadermat.set_shader_parameter("Direction", 4)
+			print("left")
+		1:
+			shadermat.set_shader_parameter("Direction", 0)
+			print("right")
+		2:
+			shadermat.set_shader_parameter("Direction", 6)
+			print("up")
+		3:
+			shadermat.set_shader_parameter("Direction", 2)
+			print("down")
+		4:
+			shadermat.set_shader_parameter("Direction", 7)
+			print("right up")
+			pass
+		5:
+			shadermat.set_shader_parameter("Direction", 1)
+			print("right down")
+			pass
+		6:
+			shadermat.set_shader_parameter("Direction", 5)
+			print("left up")
+			pass
+		7:
+			shadermat.set_shader_parameter("Direction", 3)
+			print("left down")
+			pass
+	
+
+
+func get_closest_direction_vector() -> int:
+	
+	#print(transform.x.normalized())
+	var forward = transform.x.normalized()
+	var closest_direction: Vector2
+	var number: int
+	for i in range(directions.size()):
+		#print(transform.x.normalized().distance_to(directions[0]))
+		
+		#print(i, " Dot to: ", forward.dot(directions[i].normalized()))
+		if i == 0:
+			closest_direction = directions[0]
+			number = i
+		if forward.dot(directions[i]) > forward.dot(closest_direction):
+			closest_direction = directions[i]
+			number = i
+			#print("Closest Dot ", forward.dot(directions[i].normalized()))
+			
+	#print(closest_direction)
+	return number
 		
 func backwards_force(boost, direction):
 	var crash_velocity = 1250 if boost else 650

@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://bush8np7mrf14"]
 
-[ext_resource type="Shader" uid="uid://dbdtur0u0dip4" path="res://Assets/Shaders/Car.tres" id="1_3nhha"]
+[ext_resource type="Shader" uid="uid://clbkgnlusl7bj" path="res://Assets/Shaders/Car.tres" id="1_3nhha"]
 [ext_resource type="Texture2D" uid="uid://2arv5ssl4i3d" path="res://Assets/Sprites/Pete.png" id="2_ar3yw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7xm81"]
+resource_local_to_scene = true
 shader = ExtResource("1_3nhha")
 shader_parameter/Direction = 0.0
 shader_parameter/Car_Texture = ExtResource("2_ar3yw")
