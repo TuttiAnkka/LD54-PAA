@@ -124,6 +124,7 @@ animations = [{
 }]
 
 [node name="SmokeEmitter" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_5vqxt")
 health_based = true
 

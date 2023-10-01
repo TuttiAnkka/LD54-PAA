@@ -1,8 +1,22 @@
 extends MeshInstance2D
 
-var cycle_speed: float = 30
-var shadermat = material
+@export var cycle_speed: float = 30
+var reversing = false
+var tween = null
 
-func _process(delta):
+func _ready():
+	day_cycle(false)
 	pass
-	#shadermat.set_shader_parameter()
+	
+func day_cycle(reverse: bool):
+	print("Start new cycle ",reverse)
+	tween = create_tween() # Creates a new tween
+	if reverse:
+		tween.tween_property(self, "material:shader_parameter/DarknessMutiplier", 0.0, cycle_speed)
+	else:
+		tween.tween_property(self, "material:shader_parameter/DarknessMutiplier", 1.5, cycle_speed)
+	
+	await get_tree().create_timer(5).timeout
+	day_cycle(!reverse)
+	
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dx2i5k00d711h"]
+[gd_scene load_steps=14 format=3 uid="uid://dx2i5k00d711h"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_4bao5"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="1_wv1hu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/spikes.gd" id="4_v52lb"]
 [ext_resource type="Texture2D" uid="uid://comuqf6ow6myl" path="res://Assets/Sprites/weapon.png" id="4_xyw6n"]
 [ext_resource type="Script" path="res://Assets/Scripts/weapon.gd" id="6_yb5fg"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="7_0dwyw"]
 [ext_resource type="AudioStream" uid="uid://ow756huc258v" path="res://Assets/Audio/Car.wav" id="7_aix6y"]
 [ext_resource type="Script" path="res://Assets/Scripts/money_display.gd" id="8_p2qgw"]
 [ext_resource type="PackedScene" uid="uid://db414y6o0yg86" path="res://Scenes/smoke_emitter.tscn" id="9_abdin"]
@@ -70,6 +71,10 @@ script = ExtResource("6_yb5fg")
 visible = false
 z_index = 3
 position = Vector2(20, 0)
+
+[node name="LightCone" parent="WeaponPivot" instance=ExtResource("7_0dwyw")]
+z_index = 2
+position = Vector2(181, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_aix6y")
