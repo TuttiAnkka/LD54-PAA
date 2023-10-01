@@ -29,8 +29,19 @@ var pickup = preload("res://Scenes/pickup.tscn")
 var dying = false
 @onready var gun_sound = $AudioStreamPlayer2D
 
+var spawned = false
+@onready var ray1 = $RayCast2D
+@onready var ray2 = $RayCast2D2
+@onready var ray3 = $RayCast2D3
+@onready var ray4 = $RayCast2D4
+
+
 func _enter_tree():
 	player = get_node("/root/Main/Player")
+	spawned = true
+	await get_tree().create_timer(1).timeout # Drive straight for a while.
+	spawned = false
+
 
 func _physics_process(delta):
 	
@@ -42,6 +53,35 @@ func _physics_process(delta):
 	drive_randomly(delta)
 	aim_at_player(delta)
 	shoot()
+	
+	if spawned:
+		#print("asd")
+		if ray1.is_colliding():
+			#print("asd2")
+			if ray1.get_collider() is TileMap:
+				print("Stuck")
+				position = get_node("/root/Main/GameManager").get_spawn_position()
+				return
+		if ray2.is_colliding():
+			#print("asd2")
+			if ray2.get_collider() is TileMap:
+				print("Stuck")
+				position = get_node("/root/Main/GameManager").get_spawn_position()
+				return
+		if ray3.is_colliding():
+			#print("asd2")
+			if ray3.get_collider() is TileMap:
+				print("Stuck")	
+				position = get_node("/root/Main/GameManager").get_spawn_position()
+				return
+		if ray4.is_colliding():
+			#print("asd2")
+			if ray4.get_collider() is TileMap:
+				position = get_node("/root/Main/GameManager").get_spawn_position()
+				return
+				print("Stuck")
+				
+	
 	
 func drive_randomly(delta):
 	

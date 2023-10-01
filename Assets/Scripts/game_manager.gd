@@ -53,6 +53,7 @@ func spawn_enemies():
 	var e = enemy.instantiate()
 	add_child(e) #get_tree().root.
 	e.global_position = get_spawn_position()
+	e.spawned = true
 	
 	await get_tree().create_timer(enemy_spawn_frequency).timeout # Boost cooldown timer.
 	can_spawn = true
@@ -63,7 +64,6 @@ func get_spawn_position() -> Vector2:
 	random_pos.x = -random_pos.x if coin_toss() else random_pos.x
 	random_pos.y = -random_pos.y if coin_toss() else random_pos.y
 	#Raycast down from random pos. if it hits a tile, do get_spawn_position again and return
-	
 	
 	return random_pos
 	
