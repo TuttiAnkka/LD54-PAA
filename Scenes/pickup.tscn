@@ -17,6 +17,7 @@ animations = [{
 }]
 
 [node name="Pickup" type="Node2D"]
+z_index = 3
 script = ExtResource("1_ef4mu")
 type = 1
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh06pl1b1an0x"]
+[gd_scene load_steps=12 format=3 uid="uid://bh06pl1b1an0x"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_b2qe3"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="2_qmxdt"]
@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bush8np7mrf14" path="res://Assets/Prefabs/Sprite_Prefabs/enemy_pete.tscn" id="6_cpfuv"]
 [ext_resource type="Shader" uid="uid://clbkgnlusl7bj" path="res://Assets/Shaders/Car.tres" id="7_xm2s6"]
 [ext_resource type="Texture2D" uid="uid://2arv5ssl4i3d" path="res://Assets/Sprites/Pete.png" id="8_0qcxe"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="8_345u4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8yt5r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6601"]
 resource_local_to_scene = true
 shader = ExtResource("7_xm2s6")
 shader_parameter/Direction = 0.0
@@ -27,7 +28,8 @@ script = ExtResource("1_b2qe3")
 [node name="Enemy_Pete" parent="." instance=ExtResource("6_cpfuv")]
 visible = false
 top_level = true
-material = SubResource("ShaderMaterial_8yt5r")
+z_index = 3
+material = SubResource("ShaderMaterial_o6601")
 position = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -53,6 +55,10 @@ texture = ExtResource("4_cjbq2")
 
 [node name="BulletSpawn" type="Node2D" parent="WeaponPivot/Gun"]
 position = Vector2(20, 0)
+
+[node name="LightCone" parent="WeaponPivot" instance=ExtResource("8_345u4")]
+z_index = 2
+position = Vector2(181, 0)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_whnb6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bn6o22xldy6al"]
+[gd_scene load_steps=17 format=3 uid="uid://bn6o22xldy6al"]
 
 [ext_resource type="Texture2D" uid="uid://ilkfcqg6v8o2" path="res://Assets/Textures/Canvas_Floor.png" id="1_m4pop"]
 [ext_resource type="PackedScene" uid="uid://dx2i5k00d711h" path="res://Scenes/player.tscn" id="1_nx7qx"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dyc8ci8m4unfw" path="res://Assets/Sprites/RengasKasa.png" id="5_3osea"]
 [ext_resource type="PackedScene" uid="uid://dp32ilae7gob2" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
 [ext_resource type="Script" path="res://Assets/Scripts/volume_slider.gd" id="6_ug27u"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/night_plane.tscn" id="8_h71nk"]
+[ext_resource type="Script" path="res://Assets/Scripts/night_plane.gd" id="9_7tuuw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dkry"]
 texture = ExtResource("1_m4pop")
@@ -309,6 +311,11 @@ rotation_speed = 0.065
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_7ravu")
+
+[node name="NightPlane" parent="Camera2D" instance=ExtResource("8_h71nk")]
+z_index = 1
+position = Vector2(0, 0)
+script = ExtResource("9_7tuuw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -36,6 +36,7 @@ rotation_speed = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 top_level = true
+z_index = 3
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_p6f83")
 animation = &"driving"
@@ -46,6 +47,7 @@ shape = SubResource("RectangleShape2D_8q1d0")
 [node name="WeaponPivot" type="Node2D" parent="."]
 
 [node name="Spikes" type="Sprite2D" parent="WeaponPivot"]
+z_index = 3
 position = Vector2(48, 0)
 texture = ExtResource("3_i5h1l")
 script = ExtResource("4_v52lb")
@@ -64,6 +66,7 @@ script = ExtResource("6_yb5fg")
 
 [node name="BulletSpawn" type="Node2D" parent="WeaponPivot/Weapon"]
 visible = false
+z_index = 3
 position = Vector2(20, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -77,6 +80,7 @@ current = true
 
 [node name="MoneyPivot" type="Node2D" parent="."]
 top_level = true
+z_index = 3
 script = ExtResource("8_p2qgw")
 
 [node name="Money" type="Sprite2D" parent="MoneyPivot"]

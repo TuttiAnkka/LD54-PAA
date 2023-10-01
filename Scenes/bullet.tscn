@@ -14,6 +14,7 @@ speed = 700
 shape = SubResource("CircleShape2D_yvf0o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("2_oy8qg")
 
@@ -21,6 +22,7 @@ texture = ExtResource("2_oy8qg")
 target_position = Vector2(15.45, 0)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 3
 position = Vector2(7.92, 0)
 scale = Vector2(0.18875, 0.065)
 texture = ExtResource("2_oy8qg")

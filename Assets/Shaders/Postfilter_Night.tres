@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://desw8ihv5b8by"]
+[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://b2rqh1a1uof6j"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_pmguf"]
 source = 1
@@ -23,7 +23,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-176.158, 127.357)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(520, 140)
