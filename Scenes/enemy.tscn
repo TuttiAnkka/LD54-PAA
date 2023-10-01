@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://2arv5ssl4i3d" path="res://Assets/Sprites/Pete.png" id="8_0qcxe"]
 [ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="8_345u4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6601"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hr8ml"]
 resource_local_to_scene = true
 shader = ExtResource("7_xm2s6")
 shader_parameter/Direction = 0.0
@@ -28,8 +28,8 @@ script = ExtResource("1_b2qe3")
 [node name="Enemy_Pete" parent="." instance=ExtResource("6_cpfuv")]
 visible = false
 top_level = true
-z_index = 3
-material = SubResource("ShaderMaterial_o6601")
+z_index = 4
+material = SubResource("ShaderMaterial_hr8ml")
 position = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -50,6 +50,7 @@ max_health = 100
 visible = false
 
 [node name="Gun" type="Sprite2D" parent="WeaponPivot"]
+z_index = 4
 position = Vector2(48, 0)
 texture = ExtResource("4_cjbq2")
 

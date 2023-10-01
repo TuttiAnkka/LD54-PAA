@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://thxkl5b51ly7"]
 
-[ext_resource type="Shader" uid="uid://b2rqh1a1uof6j" path="res://Assets/Shaders/Postfilter_Night.tres" id="1_egix8"]
+[ext_resource type="Shader" uid="uid://desw8ihv5b8by" path="res://Assets/Shaders/RGB_SHIFT.tres" id="1_3ubwc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uy0k6"]
-shader = ExtResource("1_egix8")
+shader = ExtResource("1_3ubwc")
 
 [sub_resource type="QuadMesh" id="QuadMesh_bpjbd"]
 

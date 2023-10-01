@@ -5,9 +5,10 @@ enum game_state { running, death, paused }
 var current_state = game_state.paused
 var game_time: float = 0
 var money: int = 0
-var gas: float = 100
+var gas: float = 96
 @onready var player = $"../Player"
 signal on_money_changed
+signal on_gas_changed
 
 # Enemy Spawning
 @export var enemy_spawn_frequency: float = 3
@@ -24,9 +25,16 @@ var can_spawn = true
 @onready var score = $"../CanvasLayer/Death/Score"
 
 func _ready():
+	consume_fuel()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
 	
+func consume_fuel():
+	await get_tree().create_timer(1).timeout
+	change_gas(1, false)
+	print("Fuel is: ", gas)
+	consume_fuel()
+
 func _process(delta):
 	if Input.is_action_just_pressed("pause") && current_state == game_state.running:
 		get_tree().paused = true
@@ -36,6 +44,8 @@ func _process(delta):
 	if not get_tree().paused:
 		spawn_enemies()
 		game_time += delta
+		
+		#Everytime this is called for a full 1.0, call change_health instead.
 		#gas -= delta
 		#print(gas)
 		
@@ -74,12 +84,15 @@ func coin_toss() -> int:
 	return (value == 1)
 	
 func change_gas(amount: int, add: bool):
+	if get_tree().paused: return
+	
 	if add:
 		gas += amount
 		gas = min(gas, 100)
 	else:
 		gas -= amount
 		gas = max(gas, 0)
+	emit_signal("on_gas_changed")
 
 func change_money(amount: int, add: bool):
 	if add:

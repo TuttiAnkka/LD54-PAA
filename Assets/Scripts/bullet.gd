@@ -26,6 +26,6 @@ func _on_body_entered(body):
 		body.get_node("HealthComponent")._take_damage(100)
 		queue_free()
 	if body.is_in_group("Player") && damage_player:
-		manager.gas -= 10
+		manager.change_gas(10, false)
 		queue_free()
 
