@@ -121,7 +121,7 @@ func _on_health_component_on_death():
 	AudioManager.play("res://Assets/Audio/Explosion.wav")
 	print("Death")
 	var p = pickup.instantiate()
-	var random = randi_range(0, 4)
+	var random = randi_range(0, 7)
 	match random:
 		0:
 			p.type = p.types.money
@@ -142,6 +142,9 @@ func _on_health_component_on_death():
 		4:
 			p.type = p.types.rifle
 			print("rifle")
+			pass
+		_:
+			# Unlucky. Nothing drops
 			pass
 	
 	get_node("/root/Main/GameManager").add_child(p) #get_tree().root.

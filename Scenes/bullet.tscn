@@ -17,4 +17,12 @@ shape = SubResource("CircleShape2D_yvf0o")
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("2_oy8qg")
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(15.45, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(7.92, 0)
+scale = Vector2(0.18875, 0.065)
+texture = ExtResource("2_oy8qg")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
