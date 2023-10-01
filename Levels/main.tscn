@@ -318,8 +318,28 @@ position = Vector2(1124, 853)
 type = 6
 
 [node name="Pickup2" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(982, -385)
-type = 0
+position = Vector2(-1203, 213)
+type = 5
+
+[node name="Pickup4" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-1109, 213)
+type = 5
+
+[node name="Pickup5" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-1010, 213)
+type = 5
+
+[node name="Pickup6" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-908, 213)
+type = 5
+
+[node name="Pickup7" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-1842, 213)
+type = 5
+
+[node name="Pickup8" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-1583, 208)
+price = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

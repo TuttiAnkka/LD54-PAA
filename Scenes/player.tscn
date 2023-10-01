@@ -76,6 +76,7 @@ bus = &"Car"
 current = true
 
 [node name="MoneyPivot" type="Node2D" parent="."]
+top_level = true
 script = ExtResource("8_p2qgw")
 
 [node name="Money" type="Sprite2D" parent="MoneyPivot"]
