@@ -18,7 +18,7 @@ func _ready():
 func _on_area_2d_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Player"):
 		if game_manager.money >= price && type != types.money:
-			game_manager.money -= price
+			game_manager.change_money(price, false)
 			picked_up(body)
 		elif type == types.money:
 			picked_up(body)
@@ -41,11 +41,11 @@ func picked_up(player):
 			player.speed_multiplier += 0.1
 			pass
 		types.money:
-			game_manager.money += 1
+			game_manager.change_money(1, true)
 			print(game_manager.money)
 			pass
 		types.gas:
-			game_manager.gas += 25
+			game_manager.change_gas(25, true)
 	
 	queue_free()
 	#TODO, play sound here with audiomanager..

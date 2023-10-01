@@ -7,6 +7,7 @@ var game_time: float = 0
 var money: int = 0
 var gas: float = 100
 @onready var player = $"../Player"
+signal on_money_changed
 
 # Enemy Spawning
 @export var enemy_spawn_frequency: float = 3
@@ -68,6 +69,22 @@ func coin_toss() -> int:
 	var value := randi() % 2 # will be 0 or 1
 	return (value == 1)
 	
+func change_gas(amount: int, add: bool):
+	if add:
+		gas += amount
+		gas = min(gas, 100)
+	else:
+		gas -= amount
+		gas = max(gas, 0)
+
+func change_money(amount: int, add: bool):
+	if add:
+		money += amount
+		money = min(money, 4)
+	else:
+		money -= amount
+		money = max(money, 0)
+	emit_signal("on_money_changed")
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene()
