@@ -100,3 +100,4 @@ scale = Vector2(0.145, 0.145)
 texture = ExtResource("1_wv1hu")
 
 [connection signal="body_entered" from="WeaponPivot/Spikes/Area2D" to="WeaponPivot/Spikes" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="WeaponPivot/Spikes/Area2D" to="WeaponPivot/Spikes" method="_on_area_2d_body_exited"]

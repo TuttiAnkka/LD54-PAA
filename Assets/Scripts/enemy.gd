@@ -7,7 +7,7 @@ var rotation_dir: int = 1 # 0 and 1 for left and right
 var can_turn: bool = true
 @export var speed: float = 100
 var crashing: bool = false
-var can_shoot = true
+var can_shoot = false
 var spread_amount = 0.05
 @export var bullet_speed = 200
 @export var turret_timer = 2
@@ -37,40 +37,23 @@ var spawned = false
 @onready var ray3 = $Rays/RayCast2D3
 @onready var ray4 = $Rays/RayCast2D4
 
-var sprite_dirs: Array[Vector2] = [
-	Vector2(1, 0), # Right
-	Vector2(-1, 0), # Left,
-	Vector2(0, 1),  # Up
-	Vector2(0, -1), # Down
-	
-	Vector2(0.5, 0.5), # Right Up
-	Vector2(0.5, -0.5), # Right Down
-	Vector2(-0.5, 0.5), # Left Up
-	Vector2(-0.5, -0.5), # Left Down
-	
-	Vector2.RIGHT + Vector2.UP,
-	Vector2.RIGHT + Vector2.DOWN,
-	Vector2.LEFT + Vector2.UP,
-	Vector2.LEFT + Vector2.DOWN
-	]
-
-
 func _enter_tree():
 	player = get_node("/root/Main/Player")
 	
 	var normalised_directions = directions
-	print("not normal ", normalised_directions)
+	#print("not normal ", normalised_directions)
 	for i in range(normalised_directions.size()):
 		normalised_directions[i] = normalised_directions[i].normalized()
-	print("normal ", normalised_directions)
+	#print("normal ", normalised_directions)
 	directions = normalised_directions
-	print("new dirs ", directions)
+	#print("new dirs ", directions)
 	
 	spawned = true
 	await get_tree().create_timer(0.15).timeout # Just to make sure raycasts are getting through
 	spawned = false
 	mesh2d.visible = true
 	weapon_pivot.visible = true
+	can_shoot = true
 
 func _physics_process(delta):
 	
@@ -151,31 +134,31 @@ func rotate_sprite():
 	match get_closest_direction_vector():
 		0:
 			shadermat.set_shader_parameter("Direction", 4)
-			print("left")
+			#print("left")
 		1:
 			shadermat.set_shader_parameter("Direction", 0)
-			print("right")
+			#print("right")
 		2:
 			shadermat.set_shader_parameter("Direction", 6)
-			print("up")
+			#print("up")
 		3:
 			shadermat.set_shader_parameter("Direction", 2)
-			print("down")
+			#print("down")
 		4:
 			shadermat.set_shader_parameter("Direction", 7)
-			print("right up")
+			#print("right up")
 			pass
 		5:
 			shadermat.set_shader_parameter("Direction", 1)
-			print("right down")
+			#print("right down")
 			pass
 		6:
 			shadermat.set_shader_parameter("Direction", 5)
-			print("left up")
+			#print("left up")
 			pass
 		7:
 			shadermat.set_shader_parameter("Direction", 3)
-			print("left down")
+			#print("left down")
 			pass
 	
 
@@ -266,8 +249,9 @@ func _on_health_component_on_death():
 			p.type = p.types.rifle
 			print("rifle")
 			pass
-		_:
-			# Unlucky. Nothing drops
+		5, 6, 7:
+			print("Nothing")
+			p.queue_free()
 			pass
 	
 	get_node("/root/Main/GameManager").add_child(p) #get_tree().root.

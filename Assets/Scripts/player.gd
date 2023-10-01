@@ -75,3 +75,4 @@ func change_weapon_status(status: bool, spread: bool):
 	weapon.spread = spread
 	weapon.canshoot = status
 
+

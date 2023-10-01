@@ -60,9 +60,10 @@ func spawn_enemies():
 
 func get_spawn_position() -> Vector2:
 	#Get player pos and look around in a random dir 400-700 pixels away. find if that place is obstructed somehow...
-	var random_pos: Vector2 = player.global_position + Vector2(randf_range(100, 200), randf_range(100, 200))
+	var random_pos: Vector2 = player.global_position + Vector2(randf_range(75, 125), randf_range(75, 125))
 	random_pos.x = -random_pos.x if coin_toss() else random_pos.x
 	random_pos.y = -random_pos.y if coin_toss() else random_pos.y
+	
 	#Raycast down from random pos. if it hits a tile, do get_spawn_position again and return
 	
 	return random_pos
