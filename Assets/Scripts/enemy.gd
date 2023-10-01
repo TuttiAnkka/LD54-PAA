@@ -39,7 +39,7 @@ var spawned = false
 func _enter_tree():
 	player = get_node("/root/Main/Player")
 	spawned = true
-	await get_tree().create_timer(1).timeout # Drive straight for a while.
+	await get_tree().create_timer(0.25).timeout # Just to make sure raycasts are getting through
 	spawned = false
 
 

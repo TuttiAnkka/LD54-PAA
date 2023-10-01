@@ -17,7 +17,6 @@ animations = [{
 }]
 
 [node name="Pickup" type="Node2D"]
-position = Vector2(605, 0)
 script = ExtResource("1_ef4mu")
 type = 1
 
@@ -29,5 +28,31 @@ shape = SubResource("RectangleShape2D_xn7gk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_1swd4")
+
+[node name="MoneyPivot" type="Node2D" parent="."]
+
+[node name="Money" type="Sprite2D" parent="MoneyPivot"]
+visible = false
+position = Vector2(50, 0)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("2_6juw6")
+
+[node name="Money2" type="Sprite2D" parent="MoneyPivot"]
+visible = false
+position = Vector2(-50, 0)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("2_6juw6")
+
+[node name="Money3" type="Sprite2D" parent="MoneyPivot"]
+visible = false
+position = Vector2(0, 50)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("2_6juw6")
+
+[node name="Money4" type="Sprite2D" parent="MoneyPivot"]
+visible = false
+position = Vector2(0, -50)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("2_6juw6")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

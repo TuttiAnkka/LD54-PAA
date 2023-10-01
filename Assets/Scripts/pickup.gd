@@ -9,12 +9,31 @@ enum types {shotgun, rifle, boost_cooldown, boost_duration, speed, money, gas}
 @export var speed_multiplier_change: float = 0.1
 
 var game_manager = null
+@onready var money_pivot = $MoneyPivot
+@onready var money = $MoneyPivot/Money
+@onready var money_2 = $MoneyPivot/Money2
+@onready var money_3 = $MoneyPivot/Money3
+@onready var money_4 = $MoneyPivot/Money4
+
 
 func _enter_tree():
 	game_manager = get_node("/root/Main/GameManager")
 func _ready():
 	game_manager = get_node("/root/Main/GameManager")
 	
+	if price > 0:
+		money.visible = true
+	if price > 1:
+		money_2.visible = true
+	if price > 2:
+		money_3.visible = true
+	if price > 3:
+		money_4.visible = true
+	
+func _process(delta):
+	money_pivot.rotation = money_pivot.get_rotation() + 3 * delta
+
+
 func _on_area_2d_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Player"):
 		if game_manager.money >= price && type != types.money:

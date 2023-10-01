@@ -310,37 +310,6 @@ rotation_speed = 0.065
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_7ravu")
 
-[node name="Pickup" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(344, -723)
-
-[node name="Pickup3" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(1124, 853)
-type = 6
-
-[node name="Pickup2" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(-1203, 213)
-type = 5
-
-[node name="Pickup4" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(-1109, 213)
-type = 5
-
-[node name="Pickup5" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(-1010, 213)
-type = 5
-
-[node name="Pickup6" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(-908, 213)
-type = 5
-
-[node name="Pickup7" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(-1842, 213)
-type = 5
-
-[node name="Pickup8" parent="." instance=ExtResource("5_5eqw4")]
-position = Vector2(-1583, 208)
-price = 4
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Death" type="Control" parent="CanvasLayer"]
@@ -722,6 +691,15 @@ max_distance_from_player = 1000.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 bus = &"Music"
+
+[node name="Pickup" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-540, 64)
+price = 4
+
+[node name="Pickup2" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-173, 64)
+type = 0
+price = 2
 
 [connection signal="pressed" from="CanvasLayer/Death/Restart" to="GameManager" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Death/Exit" to="GameManager" method="_on_exit_pressed"]
