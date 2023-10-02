@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bn6o22xldy6al"]
+[gd_scene load_steps=24 format=3 uid="uid://bn6o22xldy6al"]
 
 [ext_resource type="Texture2D" uid="uid://ilkfcqg6v8o2" path="res://Assets/Textures/Canvas_Floor.png" id="1_m4pop"]
 [ext_resource type="PackedScene" uid="uid://dx2i5k00d711h" path="res://Scenes/player.tscn" id="1_nx7qx"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dp32ilae7gob2" path="res://Scenes/pickup.tscn" id="5_5eqw4"]
 [ext_resource type="Script" path="res://Assets/Scripts/volume_slider.gd" id="6_ug27u"]
 [ext_resource type="PackedScene" uid="uid://thxkl5b51ly7" path="res://Assets/Prefabs/night_plane.tscn" id="8_h71nk"]
+[ext_resource type="AudioStream" uid="uid://dunhgbgkoh3kf" path="res://Assets/Audio/Music_01.wav" id="11_3jxlq"]
 [ext_resource type="PackedScene" uid="uid://br2iadt57xl77" path="res://Scenes/Props/prop_puu.tscn" id="12_evis2"]
 [ext_resource type="PackedScene" uid="uid://fjelqhtuloej" path="res://Scenes/Props/prop_tankkeri.tscn" id="12_oa5vc"]
 [ext_resource type="PackedScene" uid="uid://bqsp1wstxku34" path="res://Scenes/Props/prop_rengas.tscn" id="13_tlaw8"]
@@ -795,6 +796,8 @@ max_distance_from_player = 1000.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
+stream = ExtResource("11_3jxlq")
+autoplay = true
 bus = &"Music"
 
 [node name="Pickup" parent="." instance=ExtResource("5_5eqw4")]

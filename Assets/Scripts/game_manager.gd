@@ -17,6 +17,7 @@ var enemy = preload("res://Scenes/enemy.tscn")
 var can_spawn = true
 # Enemies should spawn every frequency seconds if there are less than max enemies.
 # If enemy gets too far from player, teleport it closer.
+var pressed_once = false
 
 # UI
 @onready var death_ui= $"../CanvasLayer/Death"
@@ -63,6 +64,7 @@ func _process(delta):
 			FileManager.save(score_rounded)
 			high_score.text = "Highscore: " + str(FileManager.load_game()) 
 		else:
+			if main_menu_ui.visible == true: return
 			player.dying = false
 			if player.car_sound.is_playing():
 				return
@@ -137,8 +139,8 @@ func change_money(amount: int, add: bool):
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene()
-	get_tree().paused = false
-	current_state = game_state.running
+	get_tree().paused = true
+	current_state = game_state.paused
 	
 func _on_exit_pressed():
 	get_tree().quit()
@@ -146,18 +148,27 @@ func _on_exit_pressed():
 func _on_continue_pressed():
 	paused_ui.visible = false
 	main_menu_ui.visible = false
-	count_down.visible = true
-	count_down.text = "3"
-	await get_tree().create_timer(1).timeout
-	#play sound
-	count_down.text = "2"
-	await get_tree().create_timer(1).timeout
-	#play sound
-	count_down.text = "1"
-	await get_tree().create_timer(1).timeout
-	#play sound
-	count_down.text = "go"
-	get_tree().paused = false
-	current_state = game_state.running
-	await get_tree().create_timer(0.5).timeout
-	count_down.visible = false
+	
+	if not pressed_once:
+		pressed_once = true
+		count_down.visible = true
+		count_down.text = "3"
+		AudioManager.play("res://Assets/Audio/Countdown.wav")
+		await get_tree().create_timer(1).timeout
+		#play sound
+		count_down.text = "2"
+		await get_tree().create_timer(1).timeout
+		#play sound
+		count_down.text = "1"
+		await get_tree().create_timer(1).timeout
+		#play sound
+		count_down.text = "go"
+		get_tree().paused = false
+		current_state = game_state.running
+		player.car_sound.play()
+		await get_tree().create_timer(0.5).timeout
+		count_down.visible = false
+	else:
+		player.car_sound.play()
+		get_tree().paused = false
+		current_state = game_state.running

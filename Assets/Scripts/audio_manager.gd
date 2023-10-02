@@ -10,8 +10,8 @@ var bus = "Sounds" # Which bus to use in Audio tab.
 var available = []  # The available players.
 var queue = []  # The queue of sounds to play.
 
-
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Create the pool of AudioStreamPlayer nodes.
 	for i in num_players:
 		var p = AudioStreamPlayer.new()
