@@ -13,6 +13,9 @@ var boost_cooldown_multiplier: float = 1.0
 var boost_duration_multiplier: float = 1.0
 var speed_multiplier: float = 1.0
 
+var flame = preload("res://Scenes/flame.tscn")
+@onready var smoke_emitter = $SmokeEmitter
+
 # Booleans
 var can_boost = true
 
@@ -60,12 +63,22 @@ func boost():
 		current_speed = boost_speed
 		spikes.boost = true
 		car_sound.pitch_scale = 3.5
+		boost_flames(25, 0)
 		await get_tree().create_timer(boost_duration * boost_duration_multiplier).timeout # Boost duration timer.
 		current_speed = speed
 		spikes.boost = false
 		car_sound.pitch_scale = 1.5
 		await get_tree().create_timer(boost_cooldown * boost_cooldown_multiplier).timeout # Boost cooldown timer.
 		can_boost = true
+		
+func boost_flames(times, current):
+	if current == times: return
+	var e = flame.instantiate()
+	get_node("/root/Main/GameManager").add_child(e)
+	e.global_position = smoke_emitter.global_position + Vector2(randf_range(-10,10), randf_range(-10, 10))
+	
+	await get_tree().create_timer(0.05).timeout
+	boost_flames(times, current+1)
 		
 func change_weapon_status(status: bool, spread: bool, frame: int):
 	if weapon.visible == status: return

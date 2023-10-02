@@ -258,7 +258,11 @@ func _on_health_component_on_death():
 			p.type = p.types.rifle
 			print("rifle")
 			pass
-		5, 6, 7:
+		5:
+			p.type = p.types.gas
+			print("gas")
+			pass		
+		6, 7:
 			print("Nothing")
 			p.queue_free()
 			pass
