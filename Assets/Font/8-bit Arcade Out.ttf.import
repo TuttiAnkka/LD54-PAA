@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://74y2kmncxset"
+path="res://.godot/imported/8-bit Arcade Out.ttf-e552dff7d5c6d1ae479f0c974fbb44f3.fontdata"
+
+[deps]
+
+source_file="res://Assets/Font/8-bit Arcade Out.ttf"
+dest_files=["res://.godot/imported/8-bit Arcade Out.ttf-e552dff7d5c6d1ae479f0c974fbb44f3.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=0
+subpixel_positioning=0
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

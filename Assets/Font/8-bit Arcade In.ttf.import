@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cjcock6acbmcg"
+path="res://.godot/imported/8-bit Arcade In.ttf-febb0f967454b3b201c2a6484414a58c.fontdata"
+
+[deps]
+
+source_file="res://Assets/Font/8-bit Arcade In.ttf"
+dest_files=["res://.godot/imported/8-bit Arcade In.ttf-febb0f967454b3b201c2a6484414a58c.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=0
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
