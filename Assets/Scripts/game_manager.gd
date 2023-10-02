@@ -24,6 +24,7 @@ var can_spawn = true
 @onready var main_menu_ui = $"../CanvasLayer/MainMenu"
 @onready var score = $"../CanvasLayer/Death/Score"
 @onready var high_score = $"../CanvasLayer/Death/HighScore"
+@onready var count_down = $"../CanvasLayer/CountDown"
 
 func _ready():
 	consume_fuel()
@@ -52,6 +53,8 @@ func _process(delta):
 		#print(gas)
 		
 		if gas <= 0:
+			player.dying = true
+			return
 			current_state = game_state.death
 			get_tree().paused = true
 			death_ui.visible = true
@@ -59,7 +62,21 @@ func _process(delta):
 			score.text = "Score: " + str(score_rounded)
 			FileManager.save(score_rounded)
 			high_score.text = "Highscore: " + str(FileManager.load_game()) 
+		else:
+			player.dying = false
+			if player.car_sound.is_playing():
+				return
+			player.car_sound.play()
 			
+func player_death():
+	current_state = game_state.death
+	get_tree().paused = true
+	death_ui.visible = true
+	var score_rounded = "%.0f" % game_time
+	score.text = "Score: " + str(score_rounded)
+	FileManager.save(score_rounded)
+	high_score.text = "Highscore: " + str(FileManager.load_game()) 
+
 func spawn_enemies():
 	if not can_spawn: return
 	can_spawn = false
@@ -127,7 +144,20 @@ func _on_exit_pressed():
 	get_tree().quit()
 	
 func _on_continue_pressed():
-	get_tree().paused = false
 	paused_ui.visible = false
 	main_menu_ui.visible = false
+	count_down.visible = true
+	count_down.text = "3"
+	await get_tree().create_timer(1).timeout
+	#play sound
+	count_down.text = "2"
+	await get_tree().create_timer(1).timeout
+	#play sound
+	count_down.text = "1"
+	await get_tree().create_timer(1).timeout
+	#play sound
+	count_down.text = "go"
+	get_tree().paused = false
 	current_state = game_state.running
+	await get_tree().create_timer(0.5).timeout
+	count_down.visible = false

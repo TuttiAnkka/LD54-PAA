@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var boost_duration: float = 0.5
 @export var rotation_speed: float = 1000
 var current_speed: float = 100.0
+var death_speed: float = 0.5
 
 # Car Upgrade Multipliers
 var boost_cooldown_multiplier: float = 1.0
@@ -18,6 +19,7 @@ var flame = preload("res://Scenes/flame.tscn")
 
 # Booleans
 var can_boost = true
+var dying = false
 
 # References
 @onready var anim = $AnimatedSprite2D
@@ -35,6 +37,7 @@ func _physics_process(delta):
 
 func movement(delta):
 	
+	
 	# Turning the car.
 	var turning = Input.get_axis("left", "right")
 	rotation = get_rotation() + (turning * rotation_speed)
@@ -44,6 +47,15 @@ func movement(delta):
 	move_and_slide()
 	
 	rotate_sprite()
+	
+	if dying:
+		current_speed -= death_speed
+		car_sound.stop()
+		
+		if current_speed <= 10:
+			get_node("/root/Main/GameManager").player_death() 
+			
+		return
 	boost()
 	
 func rotate_sprite():
