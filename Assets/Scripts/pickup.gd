@@ -51,18 +51,23 @@ func picked_up(player):
 	match type:
 		types.shotgun:
 			player.change_weapon_status(true, true, 1)
+			AudioManager.play("res://Assets/Audio/GunPickup.wav")
 			pass
 		types.rifle:
 			player.change_weapon_status(true, false, 2)
+			AudioManager.play("res://Assets/Audio/GunPickup.wav")
 			pass
 		types.boost_cooldown:
 			if(player.boost_cooldown_multiplier >= 0.5): player.boost_cooldown_multiplier -= 0.1
+			AudioManager.play("res://Assets/Audio/BoostCooldown.wav")
 			pass
 		types.boost_duration:
 			if(player.boost_duration_multiplier <= 1.5): player.boost_duration_multiplier += 0.1
+			AudioManager.play("res://Assets/Audio/BoostUpgrade.wav")
 			pass
 		types.speed:
 			if (player.speed_multiplier <= 1.5): player.speed_multiplier += 0.1
+			AudioManager.play("res://Assets/Audio/SpeedUpgrade.wav")
 			pass
 		types.money:
 			game_manager.change_money(1, true)

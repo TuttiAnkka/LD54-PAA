@@ -18,6 +18,7 @@ var can_spawn = true
 # Enemies should spawn every frequency seconds if there are less than max enemies.
 # If enemy gets too far from player, teleport it closer.
 var pressed_once = false
+var gas_warning = false
 
 # UI
 @onready var death_ui= $"../CanvasLayer/Death"
@@ -35,9 +36,17 @@ func _ready():
 	
 func consume_fuel():
 	await get_tree().create_timer(1).timeout
+	if gas < 25 && gas > 0: gas_low_warning()
+	
 	change_gas(1, false)
 	print("Fuel is: ", gas)
 	consume_fuel()
+func gas_low_warning():
+	if gas_warning: return
+	gas_warning = true
+	AudioManager.play("res://Assets/Audio/GasLow.wav")
+	await get_tree().create_timer(2).timeout
+	gas_warning = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause") && current_state == game_state.running:
@@ -153,14 +162,14 @@ func _on_continue_pressed():
 		pressed_once = true
 		count_down.visible = true
 		count_down.text = "3"
-		AudioManager.play("res://Assets/Audio/Countdown.wav")
-		await get_tree().create_timer(1).timeout
+		AudioManager.play("res://Assets/Audio/CountdownFast.wav")
+		await get_tree().create_timer(0.5).timeout
 		#play sound
 		count_down.text = "2"
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		#play sound
 		count_down.text = "1"
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		#play sound
 		count_down.text = "go"
 		get_tree().paused = false
