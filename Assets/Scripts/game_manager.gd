@@ -92,10 +92,20 @@ func spawn_enemies():
 	if not can_spawn: return
 	can_spawn = false
 	print("Spawned an enemy")
+	
+	#Close enemy spawn
 	var e = enemy.instantiate()
 	add_child(e) #get_tree().root.
 	e.global_position = get_spawn_position()
 	e.spawned = true
+	
+	#Far enemy spawn
+	var e2 = enemy.instantiate()
+	add_child(e2) #get_tree().root.
+	e2.global_position = get_spawn_position()
+	e2.global_position.x *= 2
+	e2.global_position.y *= 2
+	e2.spawned = true
 	
 	await get_tree().create_timer(enemy_spawn_frequency).timeout # Boost cooldown timer.
 	can_spawn = true
@@ -105,14 +115,14 @@ func get_spawn_position() -> Vector2:
 	var random_pos: Vector2 = player.global_position# + Vector2(randf_range(100, 1), randf_range(100, 175))
 	
 	if coin_toss():
-		random_pos.x += randf_range(215, 275)
+		random_pos.x += randf_range(360, 445)
 	else:
-		random_pos.x -= randf_range(215, 275)
+		random_pos.x -= randf_range(360, 445)
 		
 	if coin_toss():
-		random_pos.y += randf_range(155, 215)
+		random_pos.y += randf_range(270, 310)
 	else:
-		random_pos.y -= randf_range(155, 215)
+		random_pos.y -= randf_range(270, 310)
 	
 	#random_pos.x = -random_pos.x if coin_toss() else random_pos.x
 	#random_pos.y = -random_pos.y if coin_toss() else random_pos.y

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_b2qe3"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="2_qmxdt"]
 [ext_resource type="Script" path="res://Assets/Scripts/healthcomponent.gd" id="3_3qmv0"]
-[ext_resource type="Texture2D" uid="uid://comuqf6ow6myl" path="res://Assets/Sprites/weapon.png" id="4_cjbq2"]
 [ext_resource type="AudioStream" uid="uid://ct01tvlm11khy" path="res://Assets/Audio/Rifle.wav" id="5_whnb6"]
 [ext_resource type="PackedScene" uid="uid://bush8np7mrf14" path="res://Assets/Prefabs/Sprite_Prefabs/enemy_pete.tscn" id="6_cpfuv"]
+[ext_resource type="Texture2D" uid="uid://dgfws11g5jpxs" path="res://Assets/Sprites/Aseet.png" id="7_pyxfs"]
 [ext_resource type="Shader" uid="uid://clbkgnlusl7bj" path="res://Assets/Shaders/Car.tres" id="7_xm2s6"]
 [ext_resource type="Texture2D" uid="uid://2arv5ssl4i3d" path="res://Assets/Sprites/Pete.png" id="8_0qcxe"]
 [ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="8_345u4"]
@@ -52,8 +52,11 @@ visible = false
 
 [node name="Gun" type="Sprite2D" parent="WeaponPivot"]
 z_index = 4
-position = Vector2(48, 0)
-texture = ExtResource("4_cjbq2")
+position = Vector2(38, 0)
+rotation = 1.5708
+texture = ExtResource("7_pyxfs")
+hframes = 3
+frame = 2
 
 [node name="BulletSpawn" type="Node2D" parent="WeaponPivot/Gun"]
 position = Vector2(20, 0)

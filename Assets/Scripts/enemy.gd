@@ -62,8 +62,8 @@ func _enter_tree():
 
 func _physics_process(delta):
 	
-	#if position.distance_to(player.position) > 2000:
-	#	position = get_node("/root/Main/GameManager").get_spawn_position()
+	if global_position.distance_to(player.global_position) > 1750:
+		global_position = get_node("/root/Main/GameManager").get_spawn_position()
 	
 	rotate_sprite()
 	mesh2d.position = position # This needs to be enabled once you get final sprites.	
