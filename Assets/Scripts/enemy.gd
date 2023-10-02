@@ -262,8 +262,16 @@ func _on_health_component_on_death():
 			p.type = p.types.gas
 			print("gas")
 			pass		
-		6, 7:
-			print("Nothing")
+		6: 
+			p.type = p.types.boost_cooldown
+			print("boost cooldown")
+			pass
+		7:
+			p.type = p.types.boost_duration
+			print("boost duration")
+			pass
+		8,9:
+			print("Nothing")			
 			p.queue_free()
 			pass
 	
