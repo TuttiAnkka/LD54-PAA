@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dgfws11g5jpxs" path="res://Assets/Sprites/Aseet.png" id="3_o3v2c"]
 [ext_resource type="Script" path="res://Assets/Scripts/spikes.gd" id="4_v52lb"]
 [ext_resource type="Script" path="res://Assets/Scripts/weapon.gd" id="6_yb5fg"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="7_0dwyw"]
+[ext_resource type="PackedScene" uid="uid://bg2rdh5yanbbp" path="res://Assets/Prefabs/light_cone.tscn" id="7_0dwyw"]
 [ext_resource type="AudioStream" uid="uid://ow756huc258v" path="res://Assets/Audio/Car.wav" id="7_aix6y"]
 [ext_resource type="Script" path="res://Assets/Scripts/money_display.gd" id="8_p2qgw"]
 [ext_resource type="PackedScene" uid="uid://db414y6o0yg86" path="res://Scenes/smoke_emitter.tscn" id="9_abdin"]

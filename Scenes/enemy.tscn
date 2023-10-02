@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dgfws11g5jpxs" path="res://Assets/Sprites/Aseet.png" id="7_pyxfs"]
 [ext_resource type="Shader" uid="uid://clbkgnlusl7bj" path="res://Assets/Shaders/Car.tres" id="7_xm2s6"]
 [ext_resource type="Texture2D" uid="uid://2arv5ssl4i3d" path="res://Assets/Sprites/Pete.png" id="8_0qcxe"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="8_345u4"]
+[ext_resource type="PackedScene" uid="uid://bg2rdh5yanbbp" path="res://Assets/Prefabs/light_cone.tscn" id="8_345u4"]
 [ext_resource type="PackedScene" uid="uid://db414y6o0yg86" path="res://Scenes/smoke_emitter.tscn" id="10_msc6h"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nampp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t21e4"]
 resource_local_to_scene = true
 shader = ExtResource("7_xm2s6")
 shader_parameter/Direction = 0.0
@@ -30,7 +30,7 @@ script = ExtResource("1_b2qe3")
 visible = false
 top_level = true
 z_index = 4
-material = SubResource("ShaderMaterial_nampp")
+material = SubResource("ShaderMaterial_t21e4")
 position = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
