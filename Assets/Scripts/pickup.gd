@@ -74,7 +74,7 @@ func picked_up(player):
 			print(game_manager.money)
 			pass
 		types.gas:
-			game_manager.change_gas(25, true)
+			game_manager.change_gas(35, true)
 	
 	queue_free()
 	#TODO, play sound here with audiomanager..

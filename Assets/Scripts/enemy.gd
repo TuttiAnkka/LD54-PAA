@@ -236,7 +236,7 @@ func _on_health_component_on_death():
 	AudioManager.play("res://Assets/Audio/Explosion.wav")
 	print("Death")
 	var p = pickup.instantiate()
-	var random = randi_range(0, 7)
+	var random = randi_range(0, 11)
 	match random:
 		0:
 			p.type = p.types.money
@@ -270,7 +270,15 @@ func _on_health_component_on_death():
 			p.type = p.types.boost_duration
 			print("boost duration")
 			pass
-		8,9:
+		8:
+			p.type = p.types.gas
+			print("gas")
+			pass	
+		9:
+			p.type = p.types.gas
+			print("gas")
+			pass	
+		10,11:
 			print("Nothing")			
 			p.queue_free()
 			pass
