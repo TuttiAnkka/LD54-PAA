@@ -15,6 +15,9 @@ var game_manager = null
 @onready var money_3 = $MoneyPivot/Money3
 @onready var money_4 = $MoneyPivot/Money4
 
+# Get animated sprite frame, based on current enum turned into int..
+@onready var animated_sprite_2d = $AnimatedSprite2D
+
 
 func _enter_tree():
 	game_manager = get_node("/root/Main/GameManager")

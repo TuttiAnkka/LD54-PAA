@@ -31,6 +31,7 @@ var pickup = preload("res://Scenes/pickup.tscn")
 var dying = false
 @onready var gun_sound = $AudioStreamPlayer2D
 @onready var smoke_emitter = $SmokeEmitter
+var explosion = preload("res://Scenes/explosion.tscn")
 
 var spawned = false
 @onready var ray1 = $Rays/RayCast2D
@@ -227,6 +228,10 @@ func _on_health_component_on_death():
 	# Also particles.
 	if dying: return
 	dying = true
+	
+	var e = explosion.instantiate()
+	get_node("/root/Main/GameManager").add_child(e)
+	e.global_position = global_position
 	
 	AudioManager.play("res://Assets/Audio/Explosion.wav")
 	print("Death")

@@ -6,6 +6,7 @@ var damage_player = false
 var manager = null
 
 @onready var ray = $RayCast2D
+var flame = preload("res://Scenes/flame.tscn")
 
 func _enter_tree():
 	manager = get_node("/root/Main/GameManager")
@@ -24,8 +25,18 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("Enemy") && !damage_player:
 		body.get_node("HealthComponent")._take_damage(100)
+		
+		var e = flame.instantiate()
+		get_node("/root/Main/GameManager").add_child(e)
+		e.global_position = global_position
+		
 		queue_free()
 	if body.is_in_group("Player") && damage_player:
+		var e = flame.instantiate()
+		get_node("/root/Main/GameManager").add_child(e)
+		e.global_position = global_position
+		
 		manager.change_gas(10, false)
+		
 		queue_free()
 
