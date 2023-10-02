@@ -87,3 +87,4 @@ y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_eifmm")
 frame_progress = 0.528582
 script = ExtResource("2_oeoe5")
+decay_time = 0.0

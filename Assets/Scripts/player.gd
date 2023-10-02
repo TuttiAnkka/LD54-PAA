@@ -16,6 +16,7 @@ var speed_multiplier: float = 1.0
 
 var flame = preload("res://Scenes/flame.tscn")
 @onready var smoke_emitter = $SmokeEmitter
+var tyre_marks = preload("res://Scenes/tyremarks.tscn")
 
 # Booleans
 var can_boost = true
@@ -75,7 +76,7 @@ func boost():
 		current_speed = boost_speed
 		spikes.boost = true
 		car_sound.pitch_scale = 3.5
-		boost_flames(25, 0)
+		boost_flames(15, 0)
 		await get_tree().create_timer(boost_duration * boost_duration_multiplier).timeout # Boost duration timer.
 		current_speed = speed
 		spikes.boost = false
@@ -85,9 +86,10 @@ func boost():
 		
 func boost_flames(times, current):
 	if current == times: return
-	var e = flame.instantiate()
+	var e = tyre_marks.instantiate()
 	get_node("/root/Main/GameManager").add_child(e)
-	e.global_position = smoke_emitter.global_position + Vector2(randf_range(-10,10), randf_range(-10, 10))
+	e.global_position = smoke_emitter.global_position# + Vector2(randf_range(-10,10), randf_range(-10, 10))
+	e.rotation = rotation
 	
 	await get_tree().create_timer(0.05).timeout
 	boost_flames(times, current+1)
