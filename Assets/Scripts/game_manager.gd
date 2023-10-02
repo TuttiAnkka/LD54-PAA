@@ -72,7 +72,7 @@ func _process(delta):
 			death_ui.visible = true
 			var score_rounded = "%.0f" % game_time
 			score.text = "Score: " + str(score_rounded)
-			FileManager.save(score_rounded)
+			FileManager.save(round(game_time))
 			high_score.text = "Highscore: " + str(FileManager.load_game()) 
 		else:
 			if main_menu_ui.visible == true: return
@@ -87,7 +87,7 @@ func player_death():
 	death_ui.visible = true
 	var score_rounded = "%.0f" % game_time
 	score.text = "Score: " + str(score_rounded)
-	FileManager.save(score_rounded)
+	FileManager.save(round(game_time))
 	high_score.text = "Highscore: " + str(FileManager.load_game()) 
 
 func spawn_enemies():

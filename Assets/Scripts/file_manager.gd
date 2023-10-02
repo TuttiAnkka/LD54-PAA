@@ -1,7 +1,10 @@
 extends Node
 
-func save(content):
-	var old_score = load_game()
+func _ready():
+	save(150)
+
+func save(content: int):
+	var old_score: int = load_game()
 	print("Old highscore: ", old_score)
 	print("New highscore: ", content)
 	if old_score != null:
@@ -16,5 +19,5 @@ func save(content):
 func load_game():
 	var file = FileAccess.open("user://save_game.dat", FileAccess.READ)
 	if file == null: return null
-	var content = file.get_var()
+	var content: int = int(file.get_var())
 	return content
