@@ -293,6 +293,7 @@ texture = ExtResource("3_64ydb")
 [node name="Puu5" type="Sprite2D" parent="Sprites"]
 position = Vector2(-874, -37)
 texture = ExtResource("3_64ydb")
+hframes = 2
 
 [node name="Rengas" type="Sprite2D" parent="Sprites"]
 position = Vector2(-554, 308)
@@ -325,6 +326,7 @@ script = ExtResource("2_7ravu")
 [node name="NightPlane" parent="Camera2D" instance=ExtResource("8_h71nk")]
 z_index = 1
 position = Vector2(0, 0)
+cycle_speed = 25.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -776,6 +778,15 @@ price = 2
 position = Vector2(-798, 424)
 type = 0
 price = 1
+
+[node name="Pickup4" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-846, 191)
+type = 4
+price = 2
+
+[node name="Pickup5" parent="." instance=ExtResource("5_5eqw4")]
+position = Vector2(-1208, 191)
+type = 2
 
 [connection signal="pressed" from="CanvasLayer/Death/Restart" to="GameManager" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Death/Exit" to="GameManager" method="_on_exit_pressed"]

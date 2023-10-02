@@ -1,16 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp32ilae7gob2"]
+[gd_scene load_steps=13 format=3 uid="uid://dp32ilae7gob2"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pickup.gd" id="1_ef4mu"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="2_6juw6"]
+[ext_resource type="Texture2D" uid="uid://dgfws11g5jpxs" path="res://Assets/Sprites/Aseet.png" id="2_cf5b8"]
 [ext_resource type="Texture2D" uid="uid://c6mrm06mjmgck" path="res://Assets/Sprites/KolikkoJaBensa.png" id="3_bgkai"]
+[ext_resource type="Texture2D" uid="uid://dvbc0o3iaqdwc" path="res://Assets/Sprites/Kaasutin.png" id="4_0i062"]
+[ext_resource type="Texture2D" uid="uid://dogulsjp5qgeo" path="res://Assets/Sprites/Moottori.png" id="4_01pfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xn7gk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7b65"]
+atlas = ExtResource("2_cf5b8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06bmg"]
+atlas = ExtResource("2_cf5b8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjdqg"]
+atlas = ExtResource("3_bgkai")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hj40"]
+atlas = ExtResource("3_bgkai")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1swd4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_e7b65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06bmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0i062")
+}, {
+"duration": 1.0,
 "texture": ExtResource("2_6juw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_01pfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjdqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hj40")
 }],
 "loop": true,
 "name": &"default",
@@ -28,7 +65,6 @@ type = 1
 shape = SubResource("RectangleShape2D_xn7gk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_1swd4")
 
 [node name="MoneyPivot" type="Node2D" parent="."]

@@ -38,7 +38,7 @@ func _process(delta):
 				await get_tree().create_timer(0.15).timeout
 			
 		# Wait for animation to finish before doing this.
-		player.change_weapon_status(false, false)
+		player.change_weapon_status(false, false, 1)
 		
 		
 func _ready():

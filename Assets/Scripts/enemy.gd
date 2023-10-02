@@ -190,10 +190,10 @@ func get_closest_direction_vector() -> int:
 	return number
 		
 func backwards_force(boost, direction):
-	var crash_velocity = 1250 if boost else 650
+	var crash_velocity = 950 if boost else 550
 	crashing = true
 	can_turn = false
-	velocity = direction * 550
+	velocity = direction * crash_velocity
 	await get_tree().create_timer(0.2).timeout # Drive straight for a while.
 	crashing = false
 	get_new_direction()

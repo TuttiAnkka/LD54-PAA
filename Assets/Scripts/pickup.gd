@@ -24,6 +24,8 @@ func _enter_tree():
 func _ready():
 	game_manager = get_node("/root/Main/GameManager")
 	
+	animated_sprite_2d.frame = type
+	
 	if price > 0:
 		money.visible = true
 	if price > 1:
@@ -48,19 +50,19 @@ func _on_area_2d_body_entered(body: CharacterBody2D):
 func picked_up(player):
 	match type:
 		types.shotgun:
-			player.change_weapon_status(true, true)
+			player.change_weapon_status(true, true, 1)
 			pass
 		types.rifle:
-			player.change_weapon_status(true, false)
+			player.change_weapon_status(true, false, 2)
 			pass
 		types.boost_cooldown:
-			player.get_node().boost_cooldown -= 0.1
+			if(player.boost_cooldown_multiplier >= 0.5): player.boost_cooldown_multiplier -= 0.1
 			pass
 		types.boost_duration:
-			player.get_node().boost_duration -= 0.1
+			if(player.boost_duration_multiplier <= 1.5): player.boost_duration_multiplier += 0.1
 			pass
 		types.speed:
-			player.speed_multiplier += 0.1
+			if (player.speed_multiplier <= 1.5): player.speed_multiplier += 0.1
 			pass
 		types.money:
 			game_manager.change_money(1, true)

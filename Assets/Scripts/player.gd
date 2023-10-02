@@ -67,10 +67,13 @@ func boost():
 		await get_tree().create_timer(boost_cooldown * boost_cooldown_multiplier).timeout # Boost cooldown timer.
 		can_boost = true
 		
-func change_weapon_status(status: bool, spread: bool):
+func change_weapon_status(status: bool, spread: bool, frame: int):
+	if weapon.visible == status: return
+	
 	spikes.set_process(!status)
 	spikes.visible = !status
 	weapon.set_process(status)
+	weapon.frame = frame
 	weapon.visible = status
 	weapon.spread = spread
 	weapon.canshoot = status

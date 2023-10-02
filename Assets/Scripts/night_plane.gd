@@ -16,7 +16,7 @@ func day_cycle(reverse: bool):
 	else:
 		tween.tween_property(self, "material:shader_parameter/DarknessMutiplier", 1.5, cycle_speed)
 	
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(cycle_speed).timeout
 	day_cycle(!reverse)
 	
 
