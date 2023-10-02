@@ -1,21 +1,74 @@
-[gd_scene load_steps=14 format=3 uid="uid://dx2i5k00d711h"]
+[gd_scene load_steps=22 format=3 uid="uid://dx2i5k00d711h"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_4bao5"]
-[ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="1_wv1hu"]
+[ext_resource type="Texture2D" uid="uid://bvyhbl4ws0x0c" path="res://Assets/Sprites/Tankki.png" id="2_cdxmb"]
 [ext_resource type="Texture2D" uid="uid://dgfws11g5jpxs" path="res://Assets/Sprites/Aseet.png" id="3_o3v2c"]
 [ext_resource type="Script" path="res://Assets/Scripts/spikes.gd" id="4_v52lb"]
 [ext_resource type="Script" path="res://Assets/Scripts/weapon.gd" id="6_yb5fg"]
-[ext_resource type="PackedScene" uid="uid://bg2rdh5yanbbp" path="res://Assets/Prefabs/light_cone.tscn" id="7_0dwyw"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="7_0dwyw"]
 [ext_resource type="AudioStream" uid="uid://ow756huc258v" path="res://Assets/Audio/Car.wav" id="7_aix6y"]
 [ext_resource type="Script" path="res://Assets/Scripts/money_display.gd" id="8_p2qgw"]
 [ext_resource type="PackedScene" uid="uid://db414y6o0yg86" path="res://Scenes/smoke_emitter.tscn" id="9_abdin"]
 [ext_resource type="Texture2D" uid="uid://c6mrm06mjmgck" path="res://Assets/Sprites/KolikkoJaBensa.png" id="9_giw3i"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnkkf"]
+atlas = ExtResource("2_cdxmb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4wch"]
+atlas = ExtResource("2_cdxmb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3epoj"]
+atlas = ExtResource("2_cdxmb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mddqr"]
+atlas = ExtResource("2_cdxmb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51wtc"]
+atlas = ExtResource("2_cdxmb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c522u"]
+atlas = ExtResource("2_cdxmb")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl3se"]
+atlas = ExtResource("2_cdxmb")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbshv"]
+atlas = ExtResource("2_cdxmb")
+region = Rect2(448, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_p6f83"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_wv1hu")
+"texture": SubResource("AtlasTexture_gnkkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4wch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3epoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mddqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51wtc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c522u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl3se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbshv")
 }],
 "loop": true,
 "name": &"driving",
@@ -23,7 +76,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8q1d0"]
-size = Vector2(64, 64)
+size = Vector2(62, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1ogm"]
 size = Vector2(70, 34.0001)
@@ -39,11 +92,11 @@ rotation_speed = 0.1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 top_level = true
 z_index = 4
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_p6f83")
 animation = &"driving"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8q1d0")
 
 [node name="WeaponPivot" type="Node2D" parent="."]

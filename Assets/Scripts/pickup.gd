@@ -75,6 +75,7 @@ func picked_up(player):
 			pass
 		types.gas:
 			game_manager.change_gas(35, true)
+			AudioManager.play("res://Assets/Audio/GasTankFilled.wav")
 	
 	queue_free()
 	#TODO, play sound here with audiomanager..

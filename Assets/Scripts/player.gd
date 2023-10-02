@@ -28,8 +28,26 @@ var dying = false
 @onready var weapon = $WeaponPivot/Weapon
 @onready var car_sound = $AudioStreamPlayer
 
+# 8 move dirs to choose from.
+var directions = [
+Vector2.LEFT, Vector2.RIGHT, 
+Vector2.UP, Vector2.DOWN, 
+Vector2.RIGHT + Vector2.UP,
+Vector2.RIGHT + Vector2.DOWN,
+Vector2.LEFT + Vector2.UP,
+Vector2.LEFT + Vector2.DOWN]
+
 func _ready():
 	current_speed = speed
+	
+	
+	var normalised_directions = directions
+	#print("not normal ", normalised_directions)
+	for i in range(normalised_directions.size()):
+		normalised_directions[i] = normalised_directions[i].normalized()
+	#print("normal ", normalised_directions)
+	directions = normalised_directions
+	#print("new dirs ", directions)
 	#print(speed)
 
 func _physics_process(delta):
@@ -61,14 +79,61 @@ func movement(delta):
 	
 func rotate_sprite():
 	# Comparing our current forward direction to world right vector.
-	if transform.x.dot(Vector2.RIGHT) < 0:
-		anim.flip_h = true
-	else:
-		anim.flip_h = false
+	#if transform.x.dot(Vector2.RIGHT) < 0:
+	#	anim.flip_h = true
+	#else:
+	#	anim.flip_h = false
 		
-	# TODO:
-	# We also need to compare to UP vector here..
-	# If less than 0, means we're going down. That way we can combine up and down directions to select right sprite
+	match get_closest_direction_vector():
+		0:
+			anim.frame = 4
+			#print("left")
+		1:
+			anim.frame = 0
+			#print("right")
+		2:
+			anim.frame = 6
+			#print("up")
+		3:
+			anim.frame = 2
+			#print("down")
+		4:
+			anim.frame = 7
+			#print("right up")
+			pass
+		5:
+			anim.frame = 1
+			#print("right down")
+			pass
+		6:
+			anim.frame = 5
+			#print("left up")
+			pass
+		7:
+			anim.frame = 3
+			#print("left down")
+			pass
+	
+func get_closest_direction_vector() -> int:
+	
+	#print(transform.x.normalized())
+	var forward = transform.x.normalized()
+	var closest_direction: Vector2
+	var number: int
+	for i in range(directions.size()):
+		#print(transform.x.normalized().distance_to(directions[0]))
+		
+		#print(i, " Dot to: ", forward.dot(directions[i].normalized()))
+		if i == 0:
+			closest_direction = directions[0]
+			number = i
+		if forward.dot(directions[i]) > forward.dot(closest_direction):
+			closest_direction = directions[i]
+			number = i
+			#print("Closest Dot ", forward.dot(directions[i].normalized()))
+			
+	#print(closest_direction)
+	return number
 	
 func boost():
 	if Input.is_action_just_pressed("boost") && can_boost:
