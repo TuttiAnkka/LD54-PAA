@@ -19,6 +19,8 @@ var can_spawn = true
 # If enemy gets too far from player, teleport it closer.
 var pressed_once = false
 var gas_warning = false
+var kuoppa = preload("res://Scenes/kuoppa.tscn")
+
 
 # UI
 @onready var death_ui= $"../CanvasLayer/Death"
@@ -99,13 +101,22 @@ func spawn_enemies():
 	e.global_position = get_spawn_position()
 	e.spawned = true
 	
+	var k = kuoppa.instantiate()
+	add_child(k) #get_tree().root.
+	k.global_position = e.global_position
+	
 	#Far enemy spawn
 	var e2 = enemy.instantiate()
 	add_child(e2) #get_tree().root.
 	e2.global_position = get_spawn_position()
-	e2.global_position.x *= 2
-	e2.global_position.y *= 2
+	e2.global_position.x *= 4
+	e2.global_position.y *= 4
 	e2.spawned = true
+	
+	var k2 = kuoppa.instantiate()
+	add_child(k2) #get_tree().root.
+	k2.global_position = e2.global_position
+	
 	
 	await get_tree().create_timer(enemy_spawn_frequency).timeout # Boost cooldown timer.
 	can_spawn = true
@@ -115,14 +126,14 @@ func get_spawn_position() -> Vector2:
 	var random_pos: Vector2 = player.global_position# + Vector2(randf_range(100, 1), randf_range(100, 175))
 	
 	if coin_toss():
-		random_pos.x += randf_range(360, 445)
+		random_pos.x += randf_range(260, 345)
 	else:
-		random_pos.x -= randf_range(360, 445)
+		random_pos.x -= randf_range(260, 345)
 		
 	if coin_toss():
-		random_pos.y += randf_range(270, 310)
+		random_pos.y += randf_range(170, 210)
 	else:
-		random_pos.y -= randf_range(270, 310)
+		random_pos.y -= randf_range(170, 210)
 	
 	#random_pos.x = -random_pos.x if coin_toss() else random_pos.x
 	#random_pos.y = -random_pos.y if coin_toss() else random_pos.y

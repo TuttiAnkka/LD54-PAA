@@ -26,7 +26,7 @@ animations = [{
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1ogm"]
-size = Vector2(67, 33)
+size = Vector2(70, 34.0001)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -59,8 +59,11 @@ script = ExtResource("4_v52lb")
 [node name="Area2D" type="Area2D" parent="WeaponPivot/Spikes"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/Spikes/Area2D"]
-position = Vector2(0.499998, 0.5)
+position = Vector2(6.6755e-06, -6.10352e-05)
 shape = SubResource("RectangleShape2D_q1ogm")
+
+[node name="HitPoint" type="Node2D" parent="WeaponPivot/Spikes"]
+position = Vector2(-0.000127792, -35)
 
 [node name="Weapon" type="Sprite2D" parent="WeaponPivot"]
 visible = false

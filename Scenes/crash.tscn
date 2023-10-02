@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4j3icdiwyj2q"]
+
+[ext_resource type="Texture2D" uid="uid://luedxl5rsdce" path="res://Assets/Sprites/Tormays.png" id="1_d83yn"]
+[ext_resource type="Script" path="res://Assets/Scripts/explosion.gd" id="2_g0kpf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7uvl0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d83yn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Flame" type="AnimatedSprite2D"]
+z_index = 3
+position = Vector2(-140, 70)
+sprite_frames = SubResource("SpriteFrames_7uvl0")
+frame_progress = 0.836721
+script = ExtResource("2_g0kpf")
+down_scale = true
+decay_time = 1.5

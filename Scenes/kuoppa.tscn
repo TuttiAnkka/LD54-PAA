@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp2k3q4ssgd7i"]
+
+[ext_resource type="Texture2D" uid="uid://bn712ydctju5k" path="res://Assets/Sprites/Kuoppa.png" id="1_spvej"]
+[ext_resource type="Script" path="res://Assets/Scripts/kuoppa.gd" id="2_4xp5n"]
+[ext_resource type="PackedScene" uid="uid://db414y6o0yg86" path="res://Scenes/smoke_emitter.tscn" id="2_qptwc"]
+
+[node name="Kuoppa" type="Sprite2D"]
+process_mode = 1
+z_index = 3
+position = Vector2(-532, 212)
+texture = ExtResource("1_spvej")
+script = ExtResource("2_4xp5n")
+
+[node name="SmokeEmitter" parent="." instance=ExtResource("2_qptwc")]
+z_index = 1
+position = Vector2(0, -3)
+spread = 16.0
+frequency = 0.02
+current_frame = 16
+decay_time = 0.95
+rotation_speed = 1.0
+lerp_speed = 4.0
+scale_range = Vector2(0.37, 0.67)
+health_based = false

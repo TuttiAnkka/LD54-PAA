@@ -62,7 +62,7 @@ func _enter_tree():
 
 func _physics_process(delta):
 	
-	if global_position.distance_to(player.global_position) > 1750:
+	if global_position.distance_to(player.global_position) > 2500:
 		global_position = get_node("/root/Main/GameManager").get_spawn_position()
 	
 	rotate_sprite()
