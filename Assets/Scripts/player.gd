@@ -61,7 +61,7 @@ func _physics_process(delta):
 func tween_bopping(reverse: bool):
 	tween = create_tween() # Creates a new tween
 	if reverse:
-		tween.tween_property(anim, "position:y", -3, tween_speed)
+		tween.tween_property(anim, "position:y", 3, tween_speed)
 	else:
 		tween.tween_property(anim, "position:y", 0, tween_speed)
 	

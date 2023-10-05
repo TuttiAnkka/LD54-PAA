@@ -21,6 +21,7 @@ Vector2.RIGHT + Vector2.DOWN,
 Vector2.LEFT + Vector2.UP,
 Vector2.LEFT + Vector2.DOWN]
 
+@onready var drop_shadow = $AnimationPivot/DropShadow
 @onready var mesh2d = $AnimationPivot/Enemy_Pete
 @onready var animation_pivot = $AnimationPivot
 @onready var sprite = $Sprite2D
@@ -63,7 +64,7 @@ func _enter_tree():
 	mesh2d.visible = true
 	weapon_pivot.visible = true
 	smoke_emitter.visible = true
-	
+	drop_shadow.visible = true
 	await get_tree().create_timer(1.75).timeout # Just to make sure raycasts are getting through
 	can_shoot = true
 
@@ -108,7 +109,7 @@ func _physics_process(delta):
 func tween_bopping(reverse: bool):
 	tween = create_tween() # Creates a new tween
 	if reverse:
-		tween.tween_property(mesh2d, "position:y", -3, tween_speed)
+		tween.tween_property(mesh2d, "position:y", 2, tween_speed)
 	else:
 		tween.tween_property(mesh2d, "position:y", 0, tween_speed)
 	
@@ -154,30 +155,38 @@ func rotate_sprite():
 	match get_closest_direction_vector():
 		0:
 			shadermat.set_shader_parameter("Direction", 4)
+			drop_shadow.frame = 4
 			#print("left")
 		1:
 			shadermat.set_shader_parameter("Direction", 0)
+			drop_shadow.frame = 0
 			#print("right")
 		2:
 			shadermat.set_shader_parameter("Direction", 6)
+			drop_shadow.frame = 6
 			#print("up")
 		3:
 			shadermat.set_shader_parameter("Direction", 2)
+			drop_shadow.frame = 2
 			#print("down")
 		4:
 			shadermat.set_shader_parameter("Direction", 7)
+			drop_shadow.frame = 7
 			#print("right up")
 			pass
 		5:
 			shadermat.set_shader_parameter("Direction", 1)
+			drop_shadow.frame = 1
 			#print("right down")
 			pass
 		6:
 			shadermat.set_shader_parameter("Direction", 5)
+			drop_shadow.frame = 5
 			#print("left up")
 			pass
 		7:
 			shadermat.set_shader_parameter("Direction", 3)
+			drop_shadow.frame = 3
 			#print("left down")
 			pass
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bh06pl1b1an0x"]
+[gd_scene load_steps=23 format=3 uid="uid://bh06pl1b1an0x"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_b2qe3"]
 [ext_resource type="Texture2D" uid="uid://xpar2vnw3wkb" path="res://icon.svg" id="2_qmxdt"]
 [ext_resource type="Script" path="res://Assets/Scripts/healthcomponent.gd" id="3_3qmv0"]
+[ext_resource type="Texture2D" uid="uid://dfefu2nr3sii7" path="res://Assets/Sprites/Pete_drop.png" id="5_5nsdt"]
 [ext_resource type="AudioStream" uid="uid://ct01tvlm11khy" path="res://Assets/Audio/Rifle.wav" id="5_whnb6"]
 [ext_resource type="PackedScene" uid="uid://bush8np7mrf14" path="res://Assets/Prefabs/Sprite_Prefabs/enemy_pete.tscn" id="6_cpfuv"]
 [ext_resource type="Texture2D" uid="uid://dgfws11g5jpxs" path="res://Assets/Sprites/Aseet.png" id="7_pyxfs"]
@@ -16,6 +17,70 @@ resource_local_to_scene = true
 shader = ExtResource("7_xm2s6")
 shader_parameter/Direction = 0.0
 shader_parameter/Car_Texture = ExtResource("8_0qcxe")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt03h"]
+atlas = ExtResource("5_5nsdt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrvl0"]
+atlas = ExtResource("5_5nsdt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urpiu"]
+atlas = ExtResource("5_5nsdt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yff4b"]
+atlas = ExtResource("5_5nsdt")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8uy6"]
+atlas = ExtResource("5_5nsdt")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7sjw"]
+atlas = ExtResource("5_5nsdt")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbejf"]
+atlas = ExtResource("5_5nsdt")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps3xg"]
+atlas = ExtResource("5_5nsdt")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6p074"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt03h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrvl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urpiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yff4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8uy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7sjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbejf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps3xg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vc0f"]
 size = Vector2(27, 21)
@@ -34,6 +99,10 @@ visible = false
 z_index = 4
 material = SubResource("ShaderMaterial_bv6ag")
 position = Vector2(0, 0)
+
+[node name="DropShadow" type="AnimatedSprite2D" parent="AnimationPivot"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_6p074")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
