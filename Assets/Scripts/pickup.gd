@@ -17,14 +17,19 @@ var game_manager = null
 
 # Get animated sprite frame, based on current enum turned into int..
 @onready var animated_sprite_2d = $AnimatedSprite2D
-
+@onready var drop_shadow = $DropShadow
+var tween = null
+var tween_speed = 0.35
 
 func _enter_tree():
 	game_manager = get_node("/root/Main/GameManager")
 func _ready():
+	tween_bopping(true)
+	
 	game_manager = get_node("/root/Main/GameManager")
 	
 	animated_sprite_2d.frame = type
+	drop_shadow.frame = type
 	
 	if price > 0:
 		money.visible = true
@@ -37,7 +42,16 @@ func _ready():
 	
 func _process(delta):
 	money_pivot.rotation = money_pivot.get_rotation() + 3 * delta
-
+	
+func tween_bopping(reverse: bool):
+	tween = create_tween() # Creates a new tween
+	if reverse:
+		tween.tween_property(animated_sprite_2d, "position:y", -8, tween_speed)
+	else:
+		tween.tween_property(animated_sprite_2d, "position:y", 0, tween_speed)
+	
+	await get_tree().create_timer(tween_speed).timeout
+	tween_bopping(!reverse)
 
 func _on_area_2d_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Player"):

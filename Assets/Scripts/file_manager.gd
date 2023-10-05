@@ -1,12 +1,9 @@
 extends Node
 
-func _ready():
-	save(150)
-
 func save(content: int):
 	var old_score: int = load_game()
-	print("Old highscore: ", old_score)
-	print("New highscore: ", content)
+	print("Old highscore: ", old_score) #97
+	print("New highscore: ", content) #150
 	if old_score != null:
 		if old_score > content:
 			return

@@ -21,7 +21,8 @@ Vector2.RIGHT + Vector2.DOWN,
 Vector2.LEFT + Vector2.UP,
 Vector2.LEFT + Vector2.DOWN]
 
-@onready var mesh2d = $Enemy_Pete
+@onready var mesh2d = $AnimationPivot/Enemy_Pete
+@onready var animation_pivot = $AnimationPivot
 @onready var sprite = $Sprite2D
 @onready var weapon_pivot = $WeaponPivot
 @onready var bullet_spawn = $WeaponPivot/Gun/BulletSpawn
@@ -38,6 +39,12 @@ var spawned = false
 @onready var ray2 = $Rays/RayCast2D2
 @onready var ray3 = $Rays/RayCast2D3
 @onready var ray4 = $Rays/RayCast2D4
+
+var tween = null
+var tween_speed = 0.15
+
+func _ready():
+	tween_bopping(true)
 
 func _enter_tree():
 	player = get_node("/root/Main/Player")
@@ -66,7 +73,7 @@ func _physics_process(delta):
 		global_position = get_node("/root/Main/GameManager").get_spawn_position()
 	
 	rotate_sprite()
-	mesh2d.position = position # This needs to be enabled once you get final sprites.	
+	animation_pivot.position = position # This needs to be enabled once you get final sprites.	
 	drive_randomly(delta)
 	aim_at_player(delta)
 	shoot()
@@ -98,7 +105,15 @@ func _physics_process(delta):
 				return
 				print("Stuck")
 				
+func tween_bopping(reverse: bool):
+	tween = create_tween() # Creates a new tween
+	if reverse:
+		tween.tween_property(mesh2d, "position:y", -3, tween_speed)
+	else:
+		tween.tween_property(mesh2d, "position:y", 0, tween_speed)
 	
+	await get_tree().create_timer(tween_speed).timeout
+	tween_bopping(!reverse)
 	
 func drive_randomly(delta):
 	

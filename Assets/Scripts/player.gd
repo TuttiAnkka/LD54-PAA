@@ -23,10 +23,11 @@ var can_boost = true
 var dying = false
 
 # References
-@onready var anim = $AnimatedSprite2D
+@onready var anim = $AnimationPivot/AnimatedSprite2D
 @onready var spikes = $WeaponPivot/Spikes
 @onready var weapon = $WeaponPivot/Weapon
 @onready var car_sound = $AudioStreamPlayer
+@onready var animation_pivot = $AnimationPivot
 
 # 8 move dirs to choose from.
 var directions = [
@@ -37,9 +38,12 @@ Vector2.RIGHT + Vector2.DOWN,
 Vector2.LEFT + Vector2.UP,
 Vector2.LEFT + Vector2.DOWN]
 
+var tween = null
+var tween_speed = 0.15
+
 func _ready():
 	current_speed = speed
-	
+	tween_bopping(true)
 	
 	var normalised_directions = directions
 	#print("not normal ", normalised_directions)
@@ -52,7 +56,17 @@ func _ready():
 
 func _physics_process(delta):
 	movement(delta)
-	anim.position = position
+	animation_pivot.position = position
+
+func tween_bopping(reverse: bool):
+	tween = create_tween() # Creates a new tween
+	if reverse:
+		tween.tween_property(anim, "position:y", -3, tween_speed)
+	else:
+		tween.tween_property(anim, "position:y", 0, tween_speed)
+	
+	await get_tree().create_timer(tween_speed).timeout
+	tween_bopping(!reverse)
 
 func movement(delta):
 	
