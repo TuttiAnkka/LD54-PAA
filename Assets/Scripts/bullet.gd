@@ -9,6 +9,9 @@ var manager = null
 var flame = preload("res://Scenes/flame.tscn")
 var explosion = preload("res://Scenes/explosion.tscn")
 
+@onready var drop_shadow = $DropShadow
+
+
 func _enter_tree():
 	manager = get_node("/root/Main/GameManager")
 	await get_tree().create_timer(3).timeout # Destroy timer.
@@ -16,6 +19,11 @@ func _enter_tree():
 
 
 func _physics_process(delta):
+	if transform.x.dot(Vector2.RIGHT) < 0:
+		drop_shadow.position.y = -15
+	else:
+		drop_shadow.position.y = 15
+	
 	position += direction * speed * delta
 	look_at(global_position+direction) #global_position+
 	
