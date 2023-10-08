@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" path="res://Assets/Prefabs/light_cone.tscn" id="8_345u4"]
 [ext_resource type="PackedScene" uid="uid://db414y6o0yg86" path="res://Scenes/smoke_emitter.tscn" id="10_msc6h"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bv6ag"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok5gc"]
 resource_local_to_scene = true
 shader = ExtResource("7_xm2s6")
 shader_parameter/Direction = 0.0
@@ -97,7 +97,7 @@ top_level = true
 [node name="Enemy_Pete" parent="AnimationPivot" instance=ExtResource("6_cpfuv")]
 visible = false
 z_index = 4
-material = SubResource("ShaderMaterial_bv6ag")
+material = SubResource("ShaderMaterial_ok5gc")
 position = Vector2(0, 0)
 
 [node name="DropShadow" type="AnimatedSprite2D" parent="AnimationPivot"]
