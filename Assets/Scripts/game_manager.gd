@@ -20,7 +20,7 @@ var can_spawn = true
 var pressed_once = false
 var gas_warning = false
 var kuoppa = preload("res://Scenes/kuoppa.tscn")
-
+@onready var show_subtitles = true
 
 # UI
 @onready var death_ui= $"../CanvasLayer/Death"
@@ -29,6 +29,8 @@ var kuoppa = preload("res://Scenes/kuoppa.tscn")
 @onready var score = $"../CanvasLayer/Death/Score"
 @onready var high_score = $"../CanvasLayer/Death/HighScore"
 @onready var count_down = $"../CanvasLayer/CountDown"
+@onready var subtitles = $"../CanvasLayer/Subtitles"
+
 
 func _ready():
 	consume_fuel()
@@ -46,9 +48,17 @@ func consume_fuel():
 func gas_low_warning():
 	if gas_warning: return
 	gas_warning = true
+	display_subtitle_text("{ GAS LOW }")
 	AudioManager.play("res://Assets/Audio/GasLow.wav")
 	await get_tree().create_timer(2).timeout
 	gas_warning = false
+
+func display_subtitle_text(subtitle: String):
+	if not show_subtitles: return
+	subtitles.visible = true
+	subtitles.text = subtitle
+	await get_tree().create_timer(1.5).timeout
+	subtitles.visible = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause") && current_state == game_state.running:
@@ -202,3 +212,7 @@ func _on_continue_pressed():
 		player.car_sound.play()
 		get_tree().paused = false
 		current_state = game_state.running
+
+
+func _on_subtitle_display_toggled(button_pressed):
+	show_subtitles = button_pressed
