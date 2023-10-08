@@ -40,6 +40,7 @@ Vector2.LEFT + Vector2.DOWN]
 
 var tween = null
 var tween_speed = 0.15
+var crashing = false
 
 func _ready():
 	current_speed = speed
@@ -55,8 +56,31 @@ func _ready():
 	#print(speed)
 
 func _physics_process(delta):
-	movement(delta)
+	if not crashing:
+		movement(delta)
+
 	animation_pivot.position = position
+#	print(crashing)
+#
+	if get_last_slide_collision():
+		if get_last_slide_collision().get_collider() is TileMap && not crashing:
+			if get_last_slide_collision().get_normal().normalized().dot(transform.x.normalized()) < -0.75:
+				#print("Punch player back from a wall!")
+				#print("Dot product ", get_last_slide_collision().get_normal().normalized().dot(transform.x.normalized()))
+				crashing = true
+				velocity = -velocity.normalized() * current_speed * delta * 100 * speed_multiplier #-transform.x.normalized()
+				await get_tree().create_timer(0.25).timeout # Drive straight for a while.
+				crashing = false
+		elif get_last_slide_collision().get_collider() is CharacterBody2D && not crashing && not spikes.visible:
+			crashing = true
+			velocity = -velocity.normalized() * current_speed * delta * 100 * speed_multiplier #-transform.x.normalized()
+			await get_tree().create_timer(0.25).timeout # Drive straight for a while.
+			crashing = false
+
+	#print("Velocity is ", velocity)
+	if crashing:
+		move_and_slide()
+
 
 func tween_bopping(reverse: bool):
 	tween = create_tween() # Creates a new tween
