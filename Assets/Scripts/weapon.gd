@@ -8,7 +8,7 @@ var bullet = preload("res://Scenes/bullet.tscn")
 var spread: bool = true
 var canshoot: bool = true
 
-@export var spread_amount: float = 0.25
+@export var spread_amount: float = 0.35
 
 func _process(delta):
 
