@@ -27,7 +27,6 @@ func _ready():
 	tween_bopping(true)
 	
 	game_manager = get_node("/root/Main/GameManager")
-	print(type)
 	
 	animated_sprite_2d.frame = type
 	drop_shadow.frame = type
