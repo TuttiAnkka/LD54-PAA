@@ -1,7 +1,7 @@
 extends Sprite2D
 
 @onready var player = $"../.."
-var bullet = preload("res://Scenes/bullet.tscn")
+var bullet = preload("res://Scenes/pellet.tscn")
 @onready var bullet_spawn = $BulletSpawn
 
 @export var bullets: int = 20

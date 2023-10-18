@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://yxhmprkgnfc2"]
+
+[ext_resource type="Texture2D" uid="uid://6js26g6ci208" path="res://Assets/Sprites/Vartiotorni.png" id="1_f4t2y"]
+[ext_resource type="Script" path="res://Assets/Scripts/prop.gd" id="2_yolxm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osvrw"]
+size = Vector2(27, 60)
+
+[node name="PropTankkeri" type="Sprite2D"]
+texture = ExtResource("1_f4t2y")
+offset = Vector2(-15, -20)
+script = ExtResource("2_yolxm")
+explosion_scale = 1.5
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, -26)
+shape = SubResource("RectangleShape2D_osvrw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,22 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://br2iadt57xl77"]
+[gd_scene load_steps=4 format=3 uid="uid://uhdgfr4bcnkk"]
 
-[ext_resource type="Texture2D" uid="uid://ldqadcq8k76f" path="res://Assets/Sprites/Puu.png" id="1_2xbog"]
-[ext_resource type="Script" path="res://Assets/Scripts/prop.gd" id="2_o5tcq"]
+[ext_resource type="Texture2D" uid="uid://c6e8qmnotfjtd" path="res://Assets/Sprites/Puu_Omena.png" id="1_jy5qy"]
+[ext_resource type="Script" path="res://Assets/Scripts/prop.gd" id="2_oylns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osvrw"]
-size = Vector2(16, 60)
+size = Vector2(37, 60)
 
 [node name="PropPuu" type="Sprite2D"]
-texture = ExtResource("1_2xbog")
+texture = ExtResource("1_jy5qy")
 hframes = 2
-script = ExtResource("2_o5tcq")
+script = ExtResource("2_oylns")
 destroy_on_collision = false
 explosion_scale = 0.8
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 2)
+position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_osvrw")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

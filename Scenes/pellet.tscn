@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://feps5x8dypwx"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/bullet.gd" id="1_mkpc8"]
+[ext_resource type="Texture2D" uid="uid://8mv2ktrdh7it" path="res://Assets/Sprites/Hauli.png" id="2_ry52f"]
+[ext_resource type="Texture2D" uid="uid://dw2xxukovok4n" path="res://Assets/Sprites/Hauli_Drop.png" id="3_r4odw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvf0o"]
+radius = 8.0
+
+[node name="Pellet" type="Area2D"]
+process_mode = 1
+script = ExtResource("1_mkpc8")
+speed = 700
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yvf0o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
+rotation = 1.5708
+texture = ExtResource("2_ry52f")
+
+[node name="DropShadow" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+rotation = 1.5708
+texture = ExtResource("3_r4odw")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(15.45, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

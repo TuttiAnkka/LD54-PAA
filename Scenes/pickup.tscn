@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dp32ilae7gob2"]
+[gd_scene load_steps=22 format=3 uid="uid://dp32ilae7gob2"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pickup.gd" id="1_ef4mu"]
 [ext_resource type="Texture2D" uid="uid://bfcr277u0xvb2" path="res://Assets/Sprites/Haulikko_Pickup_drop.png" id="2_brsxa"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cu1nktvwy3s24" path="res://Assets/Sprites/KolikkoJaBensa_Drop.png" id="7_bb1hd"]
 [ext_resource type="Texture2D" uid="uid://4mgabieb37sj" path="res://Assets/Sprites/Haulikko_Pickup.png" id="8_h2bwh"]
 [ext_resource type="Texture2D" uid="uid://dlykdh0v6yp0s" path="res://Assets/Sprites/MachineGun_Pickup.png" id="9_c56ir"]
+[ext_resource type="Texture2D" uid="uid://b5up886vblg2m" path="res://Assets/Sprites/Tarvittava_Raha.png" id="14_48nhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xn7gk"]
+size = Vector2(35, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4it0"]
 atlas = ExtResource("7_bb1hd")
@@ -98,6 +100,7 @@ type = 1
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_xn7gk")
 
 [node name="DropShadow" type="AnimatedSprite2D" parent="."]
@@ -113,28 +116,28 @@ sprite_frames = SubResource("SpriteFrames_5hyej")
 [node name="Money" type="Sprite2D" parent="MoneyPivot"]
 visible = false
 position = Vector2(50, 0)
-texture = ExtResource("3_bgkai")
+texture = ExtResource("14_48nhh")
 hframes = 2
 frame = 1
 
 [node name="Money2" type="Sprite2D" parent="MoneyPivot"]
 visible = false
 position = Vector2(-50, 0)
-texture = ExtResource("3_bgkai")
+texture = ExtResource("14_48nhh")
 hframes = 2
 frame = 1
 
 [node name="Money3" type="Sprite2D" parent="MoneyPivot"]
 visible = false
 position = Vector2(0, 50)
-texture = ExtResource("3_bgkai")
+texture = ExtResource("14_48nhh")
 hframes = 2
 frame = 1
 
 [node name="Money4" type="Sprite2D" parent="MoneyPivot"]
 visible = false
 position = Vector2(0, -50)
-texture = ExtResource("3_bgkai")
+texture = ExtResource("14_48nhh")
 hframes = 2
 frame = 1
 
